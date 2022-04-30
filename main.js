@@ -1,15 +1,17 @@
-var user = "John Doe";
+let user = 'John Doe';
 console.log(user);
 
-const student = "Anna";
+const student = 'Anna';
 console.log(student);
 
-var user = student;
-console.log(student); //Anna
+{
+  let user = student;
+  console.log(student);
+} //Anna
 
 let test = 1;
 test++;
-test += "1"; //21
+test += '1'; //21
 console.log(test);
 test--; //20
 console.log(test);
@@ -22,10 +24,10 @@ for (let i = 0; i < arr.length; i++) {
 }
 console.log(result);
 
-let Arr = [2, 5, 8, 15, 0, 6, 20, 3];
-for (let i = 0; i < Arr.length; i++) {
-  if (Arr[i] > 5 && Arr[i] < 10) {
-    console.log(Arr[i]);
+let numb = [2, 5, 8, 15, 0, 6, 20, 3];
+for (let i = 0; i < numb.length; i++) {
+  if (numb[i] > 5 && numb[i] < 10) {
+    console.log(numb[i]);
   }
 }
 
