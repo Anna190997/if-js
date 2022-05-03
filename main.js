@@ -24,7 +24,7 @@ function max(a, y) {
 }
 console.log(max(8, 12));
 
-let palindrome = (str) => {
+const palindrome = (str) => {
   return str === str.split('').reverse().join('');
 };
 console.log(palindrome('anna'));
@@ -32,6 +32,6 @@ console.log(palindrome('anna'));
 let arr = [];
 for (let i = 0; i < 10; i++) {
   arr.push(Math.floor(Math.random() * 100 + 1));
-  const replaceZero = (number) => String(number).replaceAll('0', 'zero');
+  const replaceZero = (arr) => String(arr).replaceAll('0', 'zero');
   console.log(replaceZero(arr[i]));
 }
