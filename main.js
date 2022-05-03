@@ -34,6 +34,6 @@ for (let i = 0; i < 10; i++) {
   array.push(Math.floor(Math.random() * 100 + 1));
 }
 const replaceZero = (arr) => {
-  return String(arr).replaceAll('0', 'zero');
+  return String(arr).replaceAll('0', 'zero').split(',');
 };
 console.log(replaceZero(array));
