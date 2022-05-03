@@ -4,10 +4,8 @@ console.log(user);
 const student = 'Anna';
 console.log(student);
 
-{
-  let user = student;
-  console.log(student);
-} //Anna
+user = student;
+console.log(student); //Anna
 
 let test = 1;
 test++;
