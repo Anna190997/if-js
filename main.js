@@ -29,9 +29,11 @@ const palindrome = (str) => {
 };
 console.log(palindrome('anna'));
 
-let arr = [];
+let array = [];
 for (let i = 0; i < 10; i++) {
-  arr.push(Math.floor(Math.random() * 100 + 1));
-  const replaceZero = (arr) => String(arr).replaceAll('0', 'zero');
-  console.log(replaceZero(arr[i]));
+  array.push(Math.floor(Math.random() * 100 + 1));
 }
+const replaceZero = (arr) => {
+  return String(arr).replaceAll('0', 'zero');
+};
+console.log(replaceZero(array));
