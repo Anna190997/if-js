@@ -34,6 +34,14 @@ for (let i = 0; i < 10; i++) {
   array.push(Math.floor(Math.random() * 100 + 1));
 }
 const replaceZero = (arr) => {
-  return String(arr).replaceAll('0', 'zero').split(',');
+  const newArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].toString().includes('0')) {
+      newArray.push(String(arr[i]).replaceAll('0', 'zero'));
+    } else {
+      newArray.push(arr[i]);
+    }
+  }
+  return newArray;
 };
 console.log(replaceZero(array));
