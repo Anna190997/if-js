@@ -26,8 +26,6 @@ const color = function () {
     }
   };
 };
-for (let i = 0; i < colors.length; i++) {
-  first.addEventListener('click', color());
-  second.addEventListener('click', color());
-  third.addEventListener('click', color());
-}
+first.addEventListener('click', color());
+second.addEventListener('click', color());
+third.addEventListener('click', color());
