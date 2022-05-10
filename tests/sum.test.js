@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { number } from '../src/main.js';
+import { number } from '../src/number.js';
 test('When we enter two numbers, we get the result', () => {
   const a = 5;
   const b = 2;
