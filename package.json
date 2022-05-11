@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prettier": "prettier --write **/*.js",
-    "lint": "eslint --debug",
-    "lint:write": "eslint --debug --fix"
+    "prettier": "prettier --write src/**/*.js",
+    "lint": "eslint src/**/*.js",
+    "lint:write": "eslint --debug src/ --fix",
+    "prepare": "husky install",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,11 @@
   },
   "homepage": "https://github.com/Anna190997/if-js#readme",
   "devDependencies": {
-    "eslint": "^8.14.0",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "babel-jest": "^28.1.0",
+    "eslint": "^8.15.0",
+    "jest": "^28.1.0",
     "prettier": "2.6.2"
   },
   "husky": {
