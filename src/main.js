@@ -1,7 +1,3 @@
-const date = '2020-11-26';
-const result = date.split('-').reverse().join('.');
-console.log(result);
-
 const data = [
   {
     country: 'Russia',
@@ -45,18 +41,14 @@ const data = [
   },
 ];
 
-function search(town) {
-  let city;
-  let country;
-  let hotel;
+export function search(place) {
+  let result;
   for (let i = 0; i < data.length; i++) {
-    if (data[i].city === town) {
-      country = data[i].country;
-      city = data[i].city;
-      hotel = data[i].hotel;
-      const place = `Страна: ${country}, ` + `город: ${city}, ` + `отель: ${hotel}`;
-      console.log(place);
+    if (data.join(`${data[i].country}${data[i].city}${data[i].hotel}`).includes(place)) {
+      result = data[i];
+      const location = `Страна: ${result.country}, город: ${result.city}, отель: ${result.hotel}`;
+      console.log(location);
     }
   }
 }
-search('Berlin');
+search('Rokoko Hotel');
