@@ -42,13 +42,12 @@ const data = [
 ];
 
 export function search(place) {
-  let result;
   for (let i = 0; i < data.length; i++) {
-    if (data.join(`${data[i].country}${data[i].city}${data[i].hotel}`).includes(place)) {
-      result = data[i];
-      const location = `Страна: ${result.country}, город: ${result.city}, отель: ${result.hotel}`;
+    if (`${data[i].country}${data[i].city}${data[i].hotel}`.includes(place)) {
+      const { country, city, hotel } = data[i];
+      const location = `Страна: ${country}, город: ${city}, отель: ${hotel}`;
       console.log(location);
     }
   }
 }
-search('Rokoko Hotel');
+search('Ourika');
