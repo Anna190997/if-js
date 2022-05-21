@@ -1,53 +1,50 @@
-const data = [
-  {
-    country: 'Russia',
-    city: 'Saint Petersburg',
-    hotel: 'Hotel Leopold',
+const obj1 = {
+  a: 'a',
+  b: {
+    a: 'a',
+    b: 'b',
+    c: {
+      a: 1,
+    },
   },
-  {
-    country: 'Spain',
-    city: 'Santa Cruz de Tenerife',
-    hotel: 'Apartment Sunshine',
+};
+const obj2 = {
+  b: {
+    c: {
+      a: 1,
+    },
+    b: 'b',
+    a: 'a',
   },
-  {
-    country: 'Slowakia',
-    city: 'Vysokie Tatry',
-    hotel: 'Villa Kunerad',
+  a: 'a',
+};
+const obj3 = {
+  a: {
+    c: {
+      a: 'a',
+    },
+    b: 'b',
+    a: 'a',
   },
-  {
-    country: 'Germany',
-    city: 'Berlin',
-    hotel: 'Hostel Friendship',
-  },
-  {
-    country: 'Indonesia',
-    city: 'Bali',
-    hotel: 'Ubud Bali Resort&SPA',
-  },
-  {
-    country: 'Netherlands',
-    city: 'Rotterdam',
-    hotel: 'King Kong Hostel',
-  },
-  {
-    country: 'Marocco',
-    city: 'Ourika',
-    hotel: 'Rokoko Hotel',
-  },
-  {
-    country: 'Germany',
-    city: 'Berlin',
-    hotel: 'Hotel Rehberge Berlin Mitte',
-  },
-];
-
-export function search(place) {
-  for (let i = 0; i < data.length; i++) {
-    if (`${data[i].country}${data[i].city}${data[i].hotel}`.includes(place)) {
-      const { country, city, hotel } = data[i];
-      const location = `Страна: ${country}, город: ${city}, отель: ${hotel}`;
-      console.log(location);
+  b: 'b',
+};
+export const deepEqual = (object1, object2) => {
+  const arr1 = Object.getOwnPropertyNames(object1);
+  const arr2 = Object.getOwnPropertyNames(object2);
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+  for (let i = 0; i < arr1.length; i++) {
+    const bothAreObjects =
+      typeof object1[arr1[i]] === 'object' && typeof object2[arr1[i]] === 'object';
+    if (
+      (!bothAreObjects && object1[arr1[i]] !== object2[arr1[i]]) ||
+      (bothAreObjects && !deepEqual(object1[arr1[i]], object2[arr1[i]]))
+    ) {
+      return false;
     }
   }
-}
-search('Ourika');
+  return true;
+};
+console.log(deepEqual(obj1, obj2));
+console.log(deepEqual(obj1, obj3));
