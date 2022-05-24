@@ -40,11 +40,6 @@ const hotels = [
     country: 'Switzerland',
   },
   {
-    name: 'The Andaman Resort',
-    city: 'Port Dickson',
-    country: 'Malaysia',
-  },
-  {
     name: 'Virgin Hotel',
     city: 'Chicago',
     country: 'USA',
@@ -161,25 +156,18 @@ const hotels = [
   },
 ];
 
-export function search(place) {
+export const search = (place) => {
   const result = hotels.filter((location) => Object.values(location).includes(place));
   console.log(result);
-}
+};
 search('Germany');
 
-const grouped = [];
-hotels.forEach(function (a) {
-  if (!this[a.country]) {
-    this[a.country] = { city: [], country: a.country };
-    grouped.push(this[a.country]);
+const getCountries = (object, hotels) => {
+  if (!Object.hasOwn(hotels.country)) {
+    object[hotels.country] = [];
   }
-  this[a.country].city.push(a.city);
-}, Object.create(null));
-const countryKey = grouped.reduce(function (arr, hotel) {
-  const key = hotel.country;
-  delete hotel.country;
-  arr[key] = hotel;
-  return arr;
-}, {});
-
-console.log(countryKey);
+  object[hotels.country].push(hotels.city);
+  return object;
+};
+const uniqueCountries = hotels.reduce(getCountries, {});
+console.log(uniqueCountries);
