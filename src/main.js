@@ -37,10 +37,10 @@ export const deepEqual = (object1, object2) => {
   for (let i = 0; i < arr1.length; i++) {
     const bothAreObjects =
       typeof object1[arr1[i]] === 'object' && typeof object2[arr1[i]] === 'object';
-    if (
-      (!bothAreObjects && object1[arr1[i]] !== object2[arr1[i]]) ||
-      (bothAreObjects && !deepEqual(object1[arr1[i]], object2[arr1[i]]))
-    ) {
+    if (!bothAreObjects && object1[arr1[i]] !== object2[arr1[i]]) {
+      return false;
+    }
+    if (bothAreObjects && !deepEqual(object1[arr1[i]], object2[arr1[i]])) {
       return false;
     }
   }
