@@ -1,53 +1,173 @@
-const data = [
+export const palindrome = (str) => {
+  return str === str.split('').reverse().join('');
+};
+console.log(palindrome('level'));
+
+const hotels = [
   {
-    country: 'Russia',
+    name: 'Hotel Leopold',
     city: 'Saint Petersburg',
-    hotel: 'Hotel Leopold',
+    country: 'Russia',
   },
   {
-    country: 'Spain',
+    name: 'Apartment Sunshine',
     city: 'Santa Cruz de Tenerife',
-    hotel: 'Apartment Sunshine',
+    country: 'Spain',
   },
   {
-    country: 'Slowakia',
+    name: 'Villa Kunerad',
     city: 'Vysokie Tatry',
-    hotel: 'Villa Kunerad',
+    country: 'Slowakia',
   },
   {
-    country: 'Germany',
+    name: 'Hostel Friendship',
     city: 'Berlin',
-    hotel: 'Hostel Friendship',
+    country: 'Germany',
   },
   {
+    name: 'Radisson Blu Hotel',
+    city: 'Kyiv',
+    country: 'Ukraine',
+  },
+  {
+    name: 'Paradise Hotel',
+    city: 'Guadalupe',
+    country: 'Mexico',
+  },
+  {
+    name: 'Hotel Grindewald',
+    city: 'Interlaken',
+    country: 'Switzerland',
+  },
+  {
+    name: 'Virgin Hotel',
+    city: 'Chicago',
+    country: 'USA',
+  },
+  {
+    name: 'Grand Beach Resort',
+    city: 'Dubai',
+    country: 'United Arab Emirates',
+  },
+  {
+    name: 'Shilla Stay',
+    city: 'Seoul',
+    country: 'South Korea',
+  },
+  {
+    name: 'San Firenze Suites',
+    city: 'Florence',
+    country: 'Italy',
+  },
+  {
+    name: 'The Andaman Resort',
+    city: 'Port Dickson',
+    country: 'Malaysia',
+  },
+  {
+    name: 'Black Penny Villas',
+    city: 'BTDC, Nuca Dua',
     country: 'Indonesia',
-    city: 'Bali',
-    hotel: 'Ubud Bali Resort&SPA',
   },
   {
+    name: 'Koko Hotel',
+    city: 'Tokyo',
+    country: 'Japan',
+  },
+  {
+    name: 'Ramada Plaza',
+    city: 'Istanbul',
+    country: 'Turkey',
+  },
+  {
+    name: 'Waikiki Resort Hotel',
+    city: 'Hawaii',
+    country: 'USA',
+  },
+  {
+    name: 'Puro Hotel',
+    city: 'Krakow',
+    country: 'Poland',
+  },
+  {
+    name: 'Asma Suites',
+    city: 'Santorini',
+    country: 'Greece',
+  },
+  {
+    name: 'Cityden Apartments',
+    city: 'Amsterdam',
     country: 'Netherlands',
-    city: 'Rotterdam',
-    hotel: 'King Kong Hostel',
   },
   {
-    country: 'Marocco',
-    city: 'Ourika',
-    hotel: 'Rokoko Hotel',
+    name: 'Mandarin Oriental',
+    city: 'Miami',
+    country: 'USA',
   },
   {
+    name: 'Concept Terrace Hotel',
+    city: 'Rome',
+    country: 'Italy',
+  },
+  {
+    name: 'Ponta Mar Hotel',
+    city: 'Fortaleza',
+    country: 'Brazil',
+  },
+  {
+    name: 'Four Seasons Hotel',
+    city: 'Sydney',
+    country: 'Australia',
+  },
+  {
+    name: 'Le Meridien',
+    city: 'Nice',
+    country: 'France',
+  },
+  {
+    name: 'Apart Neptun',
+    city: 'Gdansk',
+    country: 'Poland',
+  },
+  {
+    name: 'Lux Isla',
+    city: 'Ibiza',
+    country: 'Spain',
+  },
+  {
+    name: 'Nox Hostel',
+    city: 'London',
+    country: 'UK',
+  },
+  {
+    name: 'Leonardo Vienna',
+    city: 'Vienna',
+    country: 'Austria',
+  },
+  {
+    name: 'Adagio Aparthotel',
+    city: 'Edinburgh',
+    country: 'UK',
+  },
+  {
+    name: 'Steigenberger Hotel',
+    city: 'Hamburg',
     country: 'Germany',
-    city: 'Berlin',
-    hotel: 'Hotel Rehberge Berlin Mitte',
   },
 ];
 
-export function search(place) {
-  for (let i = 0; i < data.length; i++) {
-    if (`${data[i].country}${data[i].city}${data[i].hotel}`.includes(place)) {
-      const { country, city, hotel } = data[i];
-      const location = `Страна: ${country}, город: ${city}, отель: ${hotel}`;
-      console.log(location);
-    }
+export const search = (place) => {
+  const result = hotels.filter((location) => Object.values(location).includes(place));
+  console.log(result);
+};
+search('Germany');
+
+const getCountries = (object, hotels) => {
+  if (!Object.hasOwn(hotels.country)) {
+    object[hotels.country] = [];
   }
-}
-search('Ourika');
+  object[hotels.country].push(hotels.city);
+  return object;
+};
+const uniqueCountries = hotels.reduce(getCountries, {});
+console.log(uniqueCountries);
