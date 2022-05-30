@@ -1,173 +1,50 @@
-export const palindrome = (str) => {
-  return str === str.split('').reverse().join('');
+const obj1 = {
+  a: 'a',
+  b: {
+    a: 'a',
+    b: 'b',
+    c: {
+      a: 1,
+    },
+  },
 };
-console.log(palindrome('level'));
-
-const hotels = [
-  {
-    name: 'Hotel Leopold',
-    city: 'Saint Petersburg',
-    country: 'Russia',
+const obj2 = {
+  b: {
+    c: {
+      a: 1,
+    },
+    b: 'b',
+    a: 'a',
   },
-  {
-    name: 'Apartment Sunshine',
-    city: 'Santa Cruz de Tenerife',
-    country: 'Spain',
-  },
-  {
-    name: 'Villa Kunerad',
-    city: 'Vysokie Tatry',
-    country: 'Slowakia',
-  },
-  {
-    name: 'Hostel Friendship',
-    city: 'Berlin',
-    country: 'Germany',
-  },
-  {
-    name: 'Radisson Blu Hotel',
-    city: 'Kyiv',
-    country: 'Ukraine',
-  },
-  {
-    name: 'Paradise Hotel',
-    city: 'Guadalupe',
-    country: 'Mexico',
-  },
-  {
-    name: 'Hotel Grindewald',
-    city: 'Interlaken',
-    country: 'Switzerland',
-  },
-  {
-    name: 'Virgin Hotel',
-    city: 'Chicago',
-    country: 'USA',
-  },
-  {
-    name: 'Grand Beach Resort',
-    city: 'Dubai',
-    country: 'United Arab Emirates',
-  },
-  {
-    name: 'Shilla Stay',
-    city: 'Seoul',
-    country: 'South Korea',
-  },
-  {
-    name: 'San Firenze Suites',
-    city: 'Florence',
-    country: 'Italy',
-  },
-  {
-    name: 'The Andaman Resort',
-    city: 'Port Dickson',
-    country: 'Malaysia',
-  },
-  {
-    name: 'Black Penny Villas',
-    city: 'BTDC, Nuca Dua',
-    country: 'Indonesia',
-  },
-  {
-    name: 'Koko Hotel',
-    city: 'Tokyo',
-    country: 'Japan',
-  },
-  {
-    name: 'Ramada Plaza',
-    city: 'Istanbul',
-    country: 'Turkey',
-  },
-  {
-    name: 'Waikiki Resort Hotel',
-    city: 'Hawaii',
-    country: 'USA',
-  },
-  {
-    name: 'Puro Hotel',
-    city: 'Krakow',
-    country: 'Poland',
-  },
-  {
-    name: 'Asma Suites',
-    city: 'Santorini',
-    country: 'Greece',
-  },
-  {
-    name: 'Cityden Apartments',
-    city: 'Amsterdam',
-    country: 'Netherlands',
-  },
-  {
-    name: 'Mandarin Oriental',
-    city: 'Miami',
-    country: 'USA',
-  },
-  {
-    name: 'Concept Terrace Hotel',
-    city: 'Rome',
-    country: 'Italy',
-  },
-  {
-    name: 'Ponta Mar Hotel',
-    city: 'Fortaleza',
-    country: 'Brazil',
-  },
-  {
-    name: 'Four Seasons Hotel',
-    city: 'Sydney',
-    country: 'Australia',
-  },
-  {
-    name: 'Le Meridien',
-    city: 'Nice',
-    country: 'France',
-  },
-  {
-    name: 'Apart Neptun',
-    city: 'Gdansk',
-    country: 'Poland',
-  },
-  {
-    name: 'Lux Isla',
-    city: 'Ibiza',
-    country: 'Spain',
-  },
-  {
-    name: 'Nox Hostel',
-    city: 'London',
-    country: 'UK',
-  },
-  {
-    name: 'Leonardo Vienna',
-    city: 'Vienna',
-    country: 'Austria',
-  },
-  {
-    name: 'Adagio Aparthotel',
-    city: 'Edinburgh',
-    country: 'UK',
-  },
-  {
-    name: 'Steigenberger Hotel',
-    city: 'Hamburg',
-    country: 'Germany',
-  },
-];
-
-export const search = (place) => {
-  const result = hotels.filter((location) => Object.values(location).includes(place));
-  console.log(result);
+  a: 'a',
 };
-search('Germany');
-
-const getCountries = (object, hotels) => {
-  if (!Object.hasOwn(hotels.country)) {
-    object[hotels.country] = [];
+const obj3 = {
+  a: {
+    c: {
+      a: 'a',
+    },
+    b: 'b',
+    a: 'a',
+  },
+  b: 'b',
+};
+export const deepEqual = (object1, object2) => {
+  const arr1 = Object.getOwnPropertyNames(object1);
+  const arr2 = Object.getOwnPropertyNames(object2);
+  if (arr1.length !== arr2.length) {
+    return false;
   }
-  object[hotels.country].push(hotels.city);
-  return object;
+  for (let i = 0; i < arr1.length; i++) {
+    const bothAreObjects =
+      typeof object1[arr1[i]] === 'object' && typeof object2[arr1[i]] === 'object';
+    if (!bothAreObjects && object1[arr1[i]] !== object2[arr1[i]]) {
+      return false;
+    }
+    if (bothAreObjects && !deepEqual(object1[arr1[i]], object2[arr1[i]])) {
+      return false;
+    }
+  }
+  return true;
 };
-const uniqueCountries = hotels.reduce(getCountries, {});
-console.log(uniqueCountries);
+console.log(deepEqual(obj1, obj2));
+console.log(deepEqual(obj1, obj3));
