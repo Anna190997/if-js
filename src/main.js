@@ -1,53 +1,64 @@
-const data = [
-  {
-    country: 'Russia',
-    city: 'Saint Petersburg',
-    hotel: 'Hotel Leopold',
-  },
-  {
-    country: 'Spain',
-    city: 'Santa Cruz de Tenerife',
-    hotel: 'Apartment Sunshine',
-  },
-  {
-    country: 'Slowakia',
-    city: 'Vysokie Tatry',
-    hotel: 'Villa Kunerad',
-  },
-  {
-    country: 'Germany',
-    city: 'Berlin',
-    hotel: 'Hostel Friendship',
-  },
-  {
-    country: 'Indonesia',
-    city: 'Bali',
-    hotel: 'Ubud Bali Resort&SPA',
-  },
-  {
-    country: 'Netherlands',
-    city: 'Rotterdam',
-    hotel: 'King Kong Hostel',
-  },
-  {
-    country: 'Marocco',
-    city: 'Ourika',
-    hotel: 'Rokoko Hotel',
-  },
-  {
-    country: 'Germany',
-    city: 'Berlin',
-    hotel: 'Hotel Rehberge Berlin Mitte',
-  },
-];
+class User {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
 
-export function search(place) {
-  for (let i = 0; i < data.length; i++) {
-    if (`${data[i].country}${data[i].city}${data[i].hotel}`.includes(place)) {
-      const { country, city, hotel } = data[i];
-      const location = `Страна: ${country}, город: ${city}, отель: ${hotel}`;
-      console.log(location);
+  get fullName() {
+    return this.firstName + ' ' + this.lastName;
+  }
+}
+
+class Student extends User {
+  constructor(firstName, lastName, admissionYear, courseName) {
+    super(firstName, lastName);
+    this.admissionYear = admissionYear;
+    this.courseName = courseName;
+  }
+  get course() {
+    return 2022 - this.admissionYear;
+  }
+}
+class Students {
+  constructor(studentsData) {
+    this.studentsData = studentsData;
+  }
+
+  getInfo() {
+    this.studentsData.sort((a, b) => (a.admissionYear < b.admissionYear ? 1 : -1));
+    for (let i = 0; i < this.studentsData.length; i++) {
+      const { firstName, lastName, admissionYear, courseName } = this.studentsData[i];
+      const information = ` ${firstName} ${lastName} - ${courseName}, ${2022 - admissionYear} курс`;
+      console.log(information);
     }
   }
 }
-search('Ourika');
+const studentsData = [
+  {
+    firstName: 'Василий',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Java',
+  },
+  {
+    firstName: 'Иван',
+    lastName: 'Иванов',
+    admissionYear: 2018,
+    courseName: 'JavaScript',
+  },
+  {
+    firstName: 'Александр',
+    lastName: 'Федоров',
+    admissionYear: 2017,
+    courseName: 'Python',
+  },
+  {
+    firstName: 'Николай',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Android',
+  },
+];
+
+const students = new Students(studentsData);
+students.getInfo();
