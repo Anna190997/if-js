@@ -26,11 +26,19 @@ class Students {
 
   getInfo() {
     this.studentsData.sort((a, b) => (a.admissionYear < b.admissionYear ? 1 : -1));
-    for (let i = 0; i < this.studentsData.length; i++) {
-      const { firstName, lastName, admissionYear, courseName } = this.studentsData[i];
-      const information = ` ${firstName} ${lastName} - ${courseName}, ${2022 - admissionYear} курс`;
-      console.log(information);
-    }
+    const information = this.studentsData.map(
+      (student) =>
+        student.firstName +
+        ' ' +
+        student.lastName +
+        ' - ' +
+        student.courseName +
+        ', ' +
+        (2022 - student.admissionYear) +
+        ' ' +
+        'курс',
+    );
+    return information;
   }
 }
 const studentsData = [
@@ -61,4 +69,4 @@ const studentsData = [
 ];
 
 const students = new Students(studentsData);
-students.getInfo();
+console.log(students.getInfo());
