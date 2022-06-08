@@ -26,19 +26,12 @@ class Students {
 
   getInfo() {
     this.studentsData.sort((a, b) => (a.admissionYear < b.admissionYear ? 1 : -1));
-    const information = this.studentsData.map(
+    return this.studentsData.map(
       (student) =>
-        student.firstName +
-        ' ' +
-        student.lastName +
-        ' - ' +
-        student.courseName +
-        ', ' +
-        (2022 - student.admissionYear) +
-        ' ' +
-        'курс',
+        `${student.firstName} ${student.lastName} - ${student.courseName}, ${
+          2022 - student.admissionYear
+        } курс`,
     );
-    return information;
   }
 }
 const studentsData = [
