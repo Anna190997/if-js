@@ -1,50 +1,65 @@
-const obj1 = {
-  a: 'a',
-  b: {
-    a: 'a',
-    b: 'b',
-    c: {
-      a: 1,
-    },
-  },
-};
-const obj2 = {
-  b: {
-    c: {
-      a: 1,
-    },
-    b: 'b',
-    a: 'a',
-  },
-  a: 'a',
-};
-const obj3 = {
-  a: {
-    c: {
-      a: 'a',
-    },
-    b: 'b',
-    a: 'a',
-  },
-  b: 'b',
-};
-export const deepEqual = (object1, object2) => {
-  const arr1 = Object.getOwnPropertyNames(object1);
-  const arr2 = Object.getOwnPropertyNames(object2);
-  if (arr1.length !== arr2.length) {
-    return false;
+class User {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
-  for (let i = 0; i < arr1.length; i++) {
-    const bothAreObjects =
-      typeof object1[arr1[i]] === 'object' && typeof object2[arr1[i]] === 'object';
-    if (!bothAreObjects && object1[arr1[i]] !== object2[arr1[i]]) {
-      return false;
-    }
-    if (bothAreObjects && !deepEqual(object1[arr1[i]], object2[arr1[i]])) {
-      return false;
-    }
+
+  get fullName() {
+    return this.firstName + ' ' + this.lastName;
   }
-  return true;
-};
-console.log(deepEqual(obj1, obj2));
-console.log(deepEqual(obj1, obj3));
+}
+
+class Student extends User {
+  constructor(firstName, lastName, admissionYear, courseName) {
+    super(firstName, lastName);
+    this.admissionYear = admissionYear;
+    this.courseName = courseName;
+  }
+  get course() {
+    return 2022 - this.admissionYear;
+  }
+}
+class Students {
+  constructor(studentsData) {
+    this.studentsData = studentsData;
+  }
+
+  getInfo() {
+    this.studentsData.sort((a, b) => (a.admissionYear < b.admissionYear ? 1 : -1));
+    return this.studentsData.map(
+      (student) =>
+        `${student.firstName} ${student.lastName} - ${student.courseName}, ${
+          2022 - student.admissionYear
+        } курс`,
+    );
+  }
+}
+const studentsData = [
+  {
+    firstName: 'Василий',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Java',
+  },
+  {
+    firstName: 'Иван',
+    lastName: 'Иванов',
+    admissionYear: 2018,
+    courseName: 'JavaScript',
+  },
+  {
+    firstName: 'Александр',
+    lastName: 'Федоров',
+    admissionYear: 2017,
+    courseName: 'Python',
+  },
+  {
+    firstName: 'Николай',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Android',
+  },
+];
+
+const students = new Students(studentsData);
+console.log(students.getInfo());
