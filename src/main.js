@@ -1,50 +1,30 @@
-const obj1 = {
-  a: 'a',
-  b: {
-    a: 'a',
-    b: 'b',
-    c: {
-      a: 1,
-    },
+const colors = {
+  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+  [Symbol.iterator]: function () {
+    return this;
   },
+      next() {
+        if (this.index < this.data.length) {
+          return {
+            done: false,
+            value: this.style.color === this.data[this.index++],
+          };
+        }
+        return {
+          done: true,//здесь наверное д.б false, чтобы цикл не останавливался?
+          value: this.index,
+        };
+      },
+    };
+for (const color of colors) {
+  color.this.data
+}
+const changeStyle = () => (click) => {
+  click.target.style.color = colors.next().value;
 };
-const obj2 = {
-  b: {
-    c: {
-      a: 1,
-    },
-    b: 'b',
-    a: 'a',
-  },
-  a: 'a',
-};
-const obj3 = {
-  a: {
-    c: {
-      a: 'a',
-    },
-    b: 'b',
-    a: 'a',
-  },
-  b: 'b',
-};
-export const deepEqual = (object1, object2) => {
-  const arr1 = Object.getOwnPropertyNames(object1);
-  const arr2 = Object.getOwnPropertyNames(object2);
-  if (arr1.length !== arr2.length) {
-    return false;
-  }
-  for (let i = 0; i < arr1.length; i++) {
-    const bothAreObjects =
-      typeof object1[arr1[i]] === 'object' && typeof object2[arr1[i]] === 'object';
-    if (!bothAreObjects && object1[arr1[i]] !== object2[arr1[i]]) {
-      return false;
-    }
-    if (bothAreObjects && !deepEqual(object1[arr1[i]], object2[arr1[i]])) {
-      return false;
-    }
-  }
-  return true;
-};
-console.log(deepEqual(obj1, obj2));
-console.log(deepEqual(obj1, obj3));
+const first = document.getElementById('text1');
+const second = document.getElementById('text2');
+const third = document.getElementById('text3');
+first.addEventListener('click', changeStyle);
+second.addEventListener('click', changeStyle);
+third.addEventListener('click', changeStyle);
