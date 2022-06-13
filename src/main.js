@@ -3,28 +3,32 @@ const colors = {
   [Symbol.iterator]: function () {
     return this;
   },
-      next() {
-        if (this.index < this.data.length) {
-          return {
-            done: false,
-            value: this.style.color === this.data[this.index++],
-          };
-        }
-        return {
-          done: true,//здесь наверное д.б false, чтобы цикл не останавливался?
-          value: this.index,
-        };
-      },
+  next() {
+    if (this.current === undefined) {
+      this.current = 0;
+    }
+    if (this.current < this.data.length) {
+      return {
+        done: false,
+        value: this.data[this.current++],
+      };
+    }
+    if (this.current === this.data.length) {
+      this.current = 0;
+      return this.next();
+    }
+    return {
+      done: true,
     };
-for (const color of colors) {
-  color.this.data
-}
-const changeStyle = () => (click) => {
-  click.target.style.color = colors.next().value;
+  },
+};
+
+const changeStyle = (color) => (click) => {
+  click.target.style.color = color.next().value;
 };
 const first = document.getElementById('text1');
 const second = document.getElementById('text2');
 const third = document.getElementById('text3');
-first.addEventListener('click', changeStyle);
-second.addEventListener('click', changeStyle);
-third.addEventListener('click', changeStyle);
+first.addEventListener('click', changeStyle(colors));
+second.addEventListener('click', changeStyle(colors));
+third.addEventListener('click', changeStyle(colors));
