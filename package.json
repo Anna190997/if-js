@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prettier": "prettier --write src/**/*.js",
-    "lint": "eslint src/**/*.js",
-    "lint:write": "eslint --debug src/ --fix",
+    "prettier": "prettier src/js/**/*js",
+    "lint": "eslint src/js/**/*.js",
+    "lint:write": "eslint --debug src/js --fix",
     "prepare": "husky install",
     "test": "jest"
   },
@@ -25,8 +25,7 @@
     "@babel/preset-env": "^7.17.10",
     "babel-jest": "^28.1.0",
     "eslint": "^8.15.0",
-    "jest": "^28.1.0",
-    "prettier": "2.6.2"
+    "jest": "^28.1.0"
   },
   "husky": {
     "hooks": {
