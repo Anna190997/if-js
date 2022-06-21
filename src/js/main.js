@@ -67,20 +67,23 @@ const data = [
 
 const generateHotel = (imageUrl, name, city, country) => {
   return `
-<div class="hotel_offer col-7 ">
-<img src=${imageUrl} class="places_image" alt="places_image"/>
+<div class="hotel_offer col-7">
+<img src= ${imageUrl} class="places_image" alt="places_image"/>
 <div class="name_hotel">
 <a href="#" class="hotel_links">${name}</a> </div>
-<div class="location">${city}, ${country}</div>
-</div>`;
+<div class="location">${city} ${country}</div>
+</div>
+`;
 };
 
 const hotelDiv = document.createElement('div');
 hotelDiv.classList.add('places_items');
 
-const hotelHTML = data.map((places) => {
-  return generateHotel(places.imageUrl, places.name, places.city, places.country);
-});
+let hotelHTML = data
+  .map((places) => {
+    return generateHotel(places.imageUrl, places.name, places.city, places.country);
+  })
+  .join('');
 
 hotelDiv.innerHTML = hotelHTML;
 const information = document.querySelector('.places');
