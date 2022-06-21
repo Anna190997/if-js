@@ -64,6 +64,7 @@
             />
             <input
               class="number col-3 col-3-s"
+              id="number"
               type="text"
               placeholder="2 Adults — 0 Children — 1 Room"
             />
@@ -126,6 +127,68 @@
             <input id="rooms" type="text" class="rooms" placeholder="1" />
           </div>
           <button class="button_adaptive_form">Search</button>
+        </form>
+        <form class="filter hidden" id="filter">
+          <div class="filter_wrapper">
+            <div class="criteria_filter">
+              <div class="name_filter">
+                Adults
+              </div>
+              <div class="name_filter">
+                Children
+              </div>
+              <div class="name_filter">
+                Rooms</br>
+              </div>
+            </div>
+            <div class="change_filter">
+              <div class="adults_filter" id="minus-btn">
+                <input type="button" class="remove_filter" id="minus-btn-first" value="-">
+                <div class="amount" id="amount-first">
+                  2
+                </div>
+                <input type="button" class="add_filter" id="plus-btn-first" value="+">
+              </div>
+              <div class="children_filter">
+                <input type="button" class="remove_filter" value="-" id="minus-btn-second">
+                <div class="amount" id="amount-second">
+                  0
+                </div>
+                <input type="button" class="add_filter" value="+" id="plus-btn-second">
+              </div>
+              <div class="rooms_filter">
+                <input type="button" class="remove_filter" value="-" id="minus-btn-third">
+                <div class="amount" id="amount-third">
+                  1
+                </div>
+                <input type="button" class="add_filter" value="+" id="plus-btn-third">
+              </div>
+            </div>
+          </div>
+        </form>
+        <form class="children_number hidden_children" id="children_number">
+          <div class="children_number_text">
+            What is the age of the child you’re travelling with?
+          </div>
+          <select class="children_age">
+            <option>1 years old</option>
+            <option>2 years old</option>
+            <option>3 years old</option>
+            <option>4 years old</option>
+            <option>5 years old</option>
+            <option>6 years old</option>
+            <option>7 years old</option>
+            <option>8 years old</option>
+            <option>9 years old</option>
+            <option>10 years old</option>
+            <option>11 years old</option>
+            <option>12 years old</option>
+            <option>13 years old</option>
+            <option>14 years old</option>
+            <option>15 years old</option>
+            <option>16 years old</option>
+            <option>17 years old</option>
+          </select>
         </form>
         <div class="application">
           <a href="#" class="google_link">

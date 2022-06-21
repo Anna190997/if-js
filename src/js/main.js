@@ -88,3 +88,94 @@ let hotelHTML = data
 hotelDiv.innerHTML = hotelHTML;
 const information = document.querySelector('.places');
 information.appendChild(hotelDiv);
+
+//Add filter of form
+
+const btn = document.getElementById('number');
+const formFilter = document.getElementById('filter');
+btn.addEventListener('click', btnClick);
+function btnClick() {
+  const classList = formFilter.classList;
+  if (classList.contains('hidden')) {
+    classList.toggle('hidden');
+  } else {
+    classList.add('hidden');
+  }
+}
+
+//Add count on button
+const btnPlusFirst = document.getElementById('plus-btn-first');
+const btnMinusFirst = document.getElementById('minus-btn-first');
+const amountFirst = document.getElementById('amount-first');
+const btnPlusSecond = document.getElementById('plus-btn-second');
+const btnMinusSecond = document.getElementById('minus-btn-second');
+const amountSecond = document.getElementById('amount-second');
+const btnPlusThird = document.getElementById('plus-btn-third');
+const btnMinusThird = document.getElementById('minus-btn-third');
+const amountThird = document.getElementById('amount-third');
+btnPlusFirst.addEventListener('click', countPlusFirst);
+btnMinusFirst.addEventListener('click', countMinusFirst);
+btnPlusSecond.addEventListener('click', countPlusSecond);
+btnPlusSecond.addEventListener('click', childrenPlus);
+btnMinusSecond.addEventListener('click', countMinusSecond);
+btnPlusThird.addEventListener('click', countPlusThird);
+btnMinusThird.addEventListener('click', countMinusThird);
+function countPlusFirst() {
+  const amountPlusFirst = amountFirst.innerHTML;
+  if (amountPlusFirst <= 29) {
+    amountFirst.innerHTML++;
+    const amountPlusFirst = amountFirst.innerHTML;
+    btn.value = result(amountPlusFirst);
+  }
+}
+function countMinusFirst() {
+  const amountMinusFirst = amountFirst.innerHTML;
+  if (+amountMinusFirst >= 2) {
+    amountFirst.innerHTML--;
+    const amountMinusFirst = amountFirst.innerHTML;
+    btn.value = result(amountMinusFirst);
+  }
+}
+function countPlusSecond() {
+  const amountPlusSecond = amountSecond.innerHTML;
+  if (+amountPlusSecond <= 9) {
+    amountSecond.innerHTML++;
+    const amountPlusSecond = amountSecond.innerHTML;
+    btn.value = result(amountPlusSecond);
+  }
+}
+function countMinusSecond() {
+  const amountMinusSecond = amountSecond.innerHTML;
+  if (+amountMinusSecond >= 1) {
+    amountSecond.innerHTML--;
+    const amountMinusSecond = amountSecond.innerHTML;
+    btn.value = result(amountMinusSecond);
+  }
+}
+function countPlusThird() {
+  const amountPlusThird = amountThird.innerHTML;
+  if (+amountPlusThird <= 29) {
+    amountThird.innerHTML++;
+    const amountPlusThird = amountThird.innerHTML;
+    btn.value = result(amountPlusThird);
+  }
+}
+function countMinusThird() {
+  const amountMinusThird = amountThird.innerHTML;
+  if (+amountMinusThird >= 2) {
+    amountThird.innerHTML--;
+    const amountMinusThird = amountThird.innerHTML;
+    btn.value = result(amountMinusThird);
+  }
+}
+const result = (amountFirst, amountSecond, amountThird) => {
+  return `${amountFirst} Adults — ${amountSecond} Children — ${amountThird} Room`;
+};
+
+const childrenFilter = document.getElementById('children_number');
+function childrenPlus() {
+  const classChildren = childrenFilter.classList;
+  if (classChildren.contains('hidden_children')) {
+    classChildren.toggle('hidden_children');
+  }
+}
