@@ -94,6 +94,7 @@ information.appendChild(hotelDiv);
 const btn = document.getElementById('number');
 const formFilter = document.getElementById('filter');
 btn.addEventListener('click', btnClick);
+btn.addEventListener('click', btnDelete);
 function btnClick() {
   const classList = formFilter.classList;
   if (classList.contains('hidden')) {
@@ -116,8 +117,10 @@ const amountThird = document.getElementById('amount-third');
 btnPlusFirst.addEventListener('click', countPlusFirst);
 btnMinusFirst.addEventListener('click', countMinusFirst);
 btnPlusSecond.addEventListener('click', countPlusSecond);
-btnPlusSecond.addEventListener('click', childrenPlus);
+btnPlusSecond.addEventListener('click', childrenView);
+btnPlusSecond.addEventListener('click', childrenFilter);
 btnMinusSecond.addEventListener('click', countMinusSecond);
+btnMinusSecond.addEventListener('click', childrenDelete);
 btnPlusThird.addEventListener('click', countPlusThird);
 btnMinusThird.addEventListener('click', countMinusThird);
 function countPlusFirst() {
@@ -125,23 +128,26 @@ function countPlusFirst() {
   if (amountPlusFirst <= 29) {
     amountFirst.innerHTML++;
     const amountPlusFirst = amountFirst.innerHTML;
-    btn.value = result(amountPlusFirst);
-  }
+    btn.value = result(amountPlusFirst, amountSecond.innerHTML, amountThird.innerHTML);
+  } else btnPlusFirst.setAttribute('disabled', true);
 }
 function countMinusFirst() {
   const amountMinusFirst = amountFirst.innerHTML;
   if (+amountMinusFirst >= 2) {
     amountFirst.innerHTML--;
     const amountMinusFirst = amountFirst.innerHTML;
-    btn.value = result(amountMinusFirst);
+    btn.value = result(amountMinusFirst, amountSecond.innerHTML, amountThird.innerHTML);
   }
 }
 function countPlusSecond() {
   const amountPlusSecond = amountSecond.innerHTML;
-  if (+amountPlusSecond <= 9) {
+  if (+amountPlusSecond < 10) {
     amountSecond.innerHTML++;
     const amountPlusSecond = amountSecond.innerHTML;
-    btn.value = result(amountPlusSecond);
+    btn.value = result(amountFirst.innerHTML, amountPlusSecond, amountThird.innerHTML);
+  }
+  if (+amountPlusSecond == 9) {
+    btnPlusSecond.setAttribute('disabled', true);
   }
 }
 function countMinusSecond() {
@@ -149,15 +155,29 @@ function countMinusSecond() {
   if (+amountMinusSecond >= 1) {
     amountSecond.innerHTML--;
     const amountMinusSecond = amountSecond.innerHTML;
-    btn.value = result(amountMinusSecond);
+    btn.value = result(amountFirst.innerHTML, amountMinusSecond, amountThird.innerHTML);
+  }
+  if (+amountMinusSecond == 0) {
+    btnMinusSecond.setAttribute('disabled', true);
+  }
+  if (+amountMinusSecond === 1) {
+    const ageList = children.classList;
+    if (!ageList.contains('children_hidden')) {
+      ageList.add('children_hidden');
+    }
   }
 }
+
+function childrenDelete() {
+  children.removeChild(children.lastElementChild);
+}
+
 function countPlusThird() {
   const amountPlusThird = amountThird.innerHTML;
   if (+amountPlusThird <= 29) {
     amountThird.innerHTML++;
     const amountPlusThird = amountThird.innerHTML;
-    btn.value = result(amountPlusThird);
+    btn.value = result(amountFirst.innerHTML, amountSecond.innerHTML, amountPlusThird);
   }
 }
 function countMinusThird() {
@@ -165,17 +185,48 @@ function countMinusThird() {
   if (+amountMinusThird >= 2) {
     amountThird.innerHTML--;
     const amountMinusThird = amountThird.innerHTML;
-    btn.value = result(amountMinusThird);
+    btn.value = result(amountFirst.innerHTML, amountSecond.innerHTML, amountMinusThird);
   }
 }
 const result = (amountFirst, amountSecond, amountThird) => {
   return `${amountFirst} Adults — ${amountSecond} Children — ${amountThird} Room`;
 };
 
-const childrenFilter = document.getElementById('children_number');
-function childrenPlus() {
-  const classChildren = childrenFilter.classList;
-  if (classChildren.contains('hidden_children')) {
-    classChildren.toggle('hidden_children');
+const children = document.getElementById('children_number');
+function childrenView() {
+  const ageList = children.classList;
+  if (ageList.contains('children_hidden')) {
+    ageList.toggle('children_hidden');
   }
+}
+
+function btnDelete() {
+  const ageList = children.classList;
+  if (!ageList.contains('children_hidden')) {
+    ageList.add('children_hidden');
+  }
+}
+
+function childrenFilter() {
+  const children = document.getElementById('children_number');
+  children.innerHTML += `<select class="children_age">
+            <option>1 years old</option>
+            <option>2 years old</option>
+            <option>3 years old</option>
+            <option>4 years old</option>
+            <option>5 years old</option>
+            <option>6 years old</option>
+            <option>7 years old</option>
+            <option>8 years old</option>
+            <option>9 years old</option>
+            <option>10 years old</option>
+            <option>11 years old</option>
+            <option>12 years old</option>
+            <option>13 years old</option>
+            <option>14 years old</option>
+            <option>15 years old</option>
+            <option>16 years old</option>
+            <option>17 years old</option>
+            </select>
+          `;
 }

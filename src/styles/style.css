@@ -360,7 +360,7 @@ header {
   margin-top: 158px;
   border-radius: 8px;
 }
-.hidden_children{
+.children_hidden{
   display: none;
 }
 .children_number_text{
