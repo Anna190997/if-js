@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { deepEqual } from '../src/main.js';
+import { deepEqual } from '../src/js/main.js';
 test('object comparison', () => {
   const obj1 = {
     a: 'a',

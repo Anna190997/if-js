@@ -1,15 +1,516 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+  lang="eng"
+  xmlns="http://www.w3.org/1999/html"
+  xmlns="http://www.w3.org/1999/html"
+>
   <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/styles/style.css" />
+      <link rel="stylesheet" href="libs/slick/slick.css"/>
+      <link rel="stylesheet" href="libs/slick/slick-theme.css"/>
+    <title>TripHouse</title>
   </head>
   <body>
-    <p id="text1">Text 1</p>
-    <p id="text2">Text 2</p>
-    <p id="text3">Text 3</p>
+    <header>
+      <div class="container">
+        <div class="header">
+          <svg class="logo fill">
+            <use xlink:href="src/icons.svg#logo" />
+          </svg>
+          <nav class="header_items">
+            <div class="links not_view_links">
+              <a class="stays" href="#">Stays</a>
+              <a class="attractions" href="#">Attraction</a>
+            </div>
+            <div class="header_icons">
+              <svg class="night">
+                <use xlink:href="src/icons.svg#night" />
+              </svg>
+              <svg class="account">
+                <use xlink:href="src/icons.svg#account" />
+              </svg>
+              <img src="src/images/menu.svg" class="burger_menu" alt="menu" />
+            </div>
+          </nav>
+        </div>
+        <div class="block_text">
+          <h1 class="block_text_items">
+            Discover stays<br />
+            to live, work or just relax
+          </h1>
+        </div>
+        <form class="informations invisible">
+          <div class="form_label">
+            <label for="destination" class="label_form"
+              >Your destination or hotel name</label
+            >
+            <label for="date" class="label_form">Check-in — Check-out</label
+            ><br />
+          </div>
+          <div class="informations_items">
+            <input
+              class="destination col-1 col-1-s"
+              type="text"
+              id="destination"
+              placeholder="New York"
+            />
+            <input
+              class="date col-2 col-2-s"
+              type="text"
+              id="date"
+              placeholder="Tue 15 Sept — Sat 19 Sept"
+            />
+            <input
+              class="number col-3 col-3-s"
+              type="text"
+              placeholder="2 Adults — 0 Children — 1 Room"
+            />
+            <button type="submit" class="submit col-4 col-4-s">Search</button>
+          </div>
+        </form>
+        <form class="form_adaptive">
+          <div class="destination_items">
+            <img src="src/images/glass.svg" alt="glass" class="glass" />
+            <input
+              class="destination_adaptive"
+              type="text"
+              placeholder="Your destination or hotel name"
+            />
+          </div>
+          <div class="period">
+            <label
+              for="start"
+              class="label_adaptive_form label_adaptive_form_first"
+              >Check-in date</label
+            >
+            <input
+              id="start"
+              type="text"
+              class="start"
+              placeholder="Tue 15 Sept 2020"
+            />
+            <label
+              for="end"
+              class="label_adaptive_form label_adaptive_form_second"
+              >Check-out date</label
+            >
+            <input
+              id="end"
+              type="text"
+              class="end"
+              placeholder="Sat 19 Sept 2020"
+            />
+          </div>
+          <div class="number_guests">
+            <label
+              for="adults"
+              class="label_adaptive_form label_adaptive_form_third"
+              >Adults</label
+            >
+            <input id="adults" type="text" class="adults" placeholder="2" />
+            <hr class="first" />
+            <label
+              for="children"
+              class="label_adaptive_form label_adaptive_form_fourth"
+              >Children</label
+            >
+            <input id="children" type="text" class="children" placeholder="0" />
+            <hr class="second" />
+            <label
+              for="rooms"
+              class="label_adaptive_form label_adaptive_form_fifth"
+              >Rooms</label
+            >
+            <input id="rooms" type="text" class="rooms" placeholder="1" />
+          </div>
+          <button class="button_adaptive_form">Search</button>
+        </form>
+        <div class="application">
+          <a href="#" class="google_link">
+            <img src="src/images/google-play.svg" class="google" alt="google_play"
+          /></a>
+          <a href="#" class="app_link">
+            <img src="src/images/app_store.svg" class="app_store" alt="app_store"
+          /></a>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <h2 class="title">What do we offer</h2>
+      <div class="line"></div>
+    </div>
+    <div class="wrapper">
+      <div class="wrapper_items">
+        <div class="block col-5 col-5-s">
+          <svg class="images">
+            <use xlink:href="src/icons.svg#support" />
+          </svg>
+          <div class="text_offer">Support 24/7</div>
+        </div>
+        <div class="block col-5 col-5-s">
+          <svg class="images">
+            <use xlink:href="src/icons.svg#communicate_directly" />
+          </svg>
+          <div class="text_offer">Communicate directly</div>
+        </div>
+        <div class="block col-5 col-5-s">
+          <svg class="images">
+            <use xlink:href="src/icons.svg#book_online" />
+          </svg>
+          <div class="text_offer">Book online</div>
+        </div>
+        <div class="block col-5 col-5-s">
+          <svg class="images">
+            <use xlink:href="src/icons.svg#reviews" />
+          </svg>
+          <div class="text_offer">Real guest reviews</div>
+        </div>
+      </div>
+    </div>
 
+    <div class="hotel">
+      <div class="container">
+        <div class="homes_loves">
+          <h2 class="title">Homes guests loves</h2>
+        </div>
+        <div class="places">
+          </div>
+      </div>
+    </div>
 
-    <script type="module" src="src/main.js"></script>
+    <div class="container destinations">
+      <h2 class="title">The best destinations</h2>
+      <form class="change">
+        <button class="change_items regions">Regions</button>
+        <button class="change_items cities">Cities</button>
+        <button class="change_items interest">
+          <span>Places <span class="invisible">of interest</span> </span>
+        </button>
+      </form>
+      <div class="regions_items">
+        <div class="regions_for_visit">
+          <div class="regions_offer col-7 col-7-s">
+            <img
+              src="src/images/Maldives.png"
+              alt="Maldives"
+              class="places_image opacity"
+            />
+            <button class="book_now not_view">Book now</button>
+            <div class="name_hotel">
+              <a href="#" class="hotel_links">Maldives</a>
+            </div>
+          </div>
+          <div class="regions_offer col-7 col-7-s">
+            <img
+              src="src/images/Spain-1.png"
+              alt="Spain"
+              class="places_image opacity"
+            />
+            <div class="name_hotel">
+              <a href="#" class="hotel_links">Spain</a>
+            </div>
+            <img src="src/images/more.svg" class="not_view_more" alt="more" />
+            <button class="book_now not_view">Book now</button>
+          </div>
+          <div class="regions_offer col-7 col-7-s not_view">
+            <img
+              src="src/images/Norway.png"
+              alt="Norway"
+              class="places_image opacity"
+            />
+            <button class="book_now not_view">Book now</button>
+            <div class="name_hotel">
+              <a href="#" class="hotel_links">Norway</a>
+            </div>
+            <img src="src/images/view_more.svg" alt="more" class="view_more" />
+          </div>
+          <div class="regions_offer col-7 col-7-s not_view">
+            <img
+              src="src/images/Island.png"
+              alt="Island"
+              class="places_image opacity"
+            />
+            <button class="book_now not_view">Book now</button>
+            <div class="name_hotel">
+              <a href="#" class="hotel_links">Island</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sign_up not_view">
+        <div class="sign_up_items">
+          <img src="src/images/user.svg" alt="user" class="user" />
+          <span class="sign_text">
+            Sign up and get 20% off your first booking
+          </span>
+          <button class="button_sign">Sign up</button>
+          <img src="src/images/Vector.svg" alt="vector" class="vector" />
+        </div>
+      </div>
+    </div>
+    <div class="container reviews">
+      <h2 class="title">
+        <span class="invisible">Guests</span>
+        <span class="not_view_reviews">R</span
+        ><span class="invisible">r</span>eviews
+      </h2>
+      <div class="reviews_content">
+        <div class="reviews_content_items">
+          <div class="reviews_items col-8">
+            <img src="src/images/Bali.png" alt="Bali" class="reviews_photo" />
+            <div class="price invisible">From 250 USD</div>
+            <div class="block_reviews">
+              <div class="place_information">
+                <div class="hotel_information">
+                  <div class="hotel_reviews">
+                    <a href="#" class="hotel_reviews_links"
+                      >Ubud Bali Resort&SPA</a
+                    >
+                  </div>
+                  <div class="location_reviews">
+                    <a href="#" class="location_reviews_links"
+                      >Bali, Indonesia</a
+                    >
+                  </div>
+                </div>
+                <div class="popularity_hotel">
+                  <div class="button_rating">
+                    <button class="rating">9,4</button>
+                  </div>
+                  <span class="number_reviews">1324 reviews</span>
+                </div>
+              </div>
+              <div class="person">
+                <div class="person_icon">
+                  <img
+                    src="src/images/people.svg"
+                    alt="user"
+                    class="user_reviews"
+                  />
+                </div>
+                <div class="person_data">
+                  <span class="reviews_name">Hanna Ivanova</span>
+                  <span class="reviews_places">
+                    <img
+                      src="src/images/Ukraine.png"
+                      alt="Ukraine"
+                      class="country"
+                    />Ukraine</span
+                  >
+                </div>
+              </div>
+              <p class="review">
+                Great location, really pleasant and clean rooms, but the thing
+                that makes this such a good place to stay are the staff. All of
+                the people are incredibly helpful and generous with their time
+                and advice.
+              </p>
+            </div>
+          </div>
+          <div class="reviews_items col-8 invisible">
+            <img
+              src="src/images/Rotterdam.png"
+              alt="Rotterdam"
+              class="reviews_photo"
+            />
+            <div class="price">From 40 USD</div>
+            <div class="block_reviews">
+              <div class="place_information">
+                <div class="hotel_information">
+                  <div class="hotel_reviews">
+                    <a href="#" class="hotel_reviews_links">King Kong Hostel</a>
+                  </div>
+                  <div class="location_reviews">
+                    <a href="#" class="location_reviews_links"
+                      >Rotterdam, Netherlands</a
+                    >
+                  </div>
+                </div>
+                <div class="popularity_hotel">
+                  <div class="button_rating">
+                    <button class="rating">8,9</button>
+                  </div>
+                  <span class="number_reviews">2016 reviews</span>
+                </div>
+              </div>
+              <div class="person">
+                <div class="person_icon">
+                  <img
+                    src="src/images/people.svg"
+                    alt="user"
+                    class="user_reviews"
+                  />
+                </div>
+                <div class="person_data">
+                  <span class="reviews_name">Adam Smith</span>
+                  <span class="reviews_places">
+                    <img
+                      src="src/images/USA.png"
+                      alt="USA"
+                      class="country"
+                    />USA</span
+                  >
+                </div>
+              </div>
+              <p class="review">
+                I've been in this hostel for a month and here is the best hostel
+                of all Excellent management of excellent and ethical staff and
+                bedrooms Bathrooms are always clean and excellent Most
+                importantly, those who work here are kind and good-natured.
+              </p>
+            </div>
+          </div>
+          <div class="reviews_items col-8 invisible">
+            <img src="src/images/Ourlka.png" alt="Ourlka" class="reviews_photo" />
+            <img
+              src="src/images/more.svg"
+              class="more_reviews"
+              alt="more_reviews"
+            />
+            <div class="price">From 100 USD</div>
+            <div class="block_reviews">
+              <div class="place_information">
+                <div class="hotel_information">
+                  <div class="hotel_reviews">
+                    <a href="#" class="hotel_reviews_links">Rokoko Hotel</a>
+                  </div>
+                  <div class="location_reviews">
+                    <a href="#" class="location_reviews_links"
+                      >Ourika, Marocco</a
+                    >
+                  </div>
+                </div>
+                <div class="popularity_hotel">
+                  <div class="button_rating">
+                    <button class="rating">9,1</button>
+                  </div>
+                  <span class="number_reviews">815 reviews</span>
+                </div>
+              </div>
+              <div class="person">
+                <div class="person_icon">
+                  <img
+                    src="src/images/people.svg"
+                    alt="user"
+                    class="user_reviews"
+                  />
+                </div>
+                <div class="person_data">
+                  <span class="reviews_name">Anika Messer</span>
+                  <span class="reviews_places"
+                    ><img
+                      src="src/images/Germany1.png"
+                      alt="Germany"
+                      class="country"
+                    />Germany</span
+                  >
+                </div>
+              </div>
+              <p class="review">
+                Efficient, friendly, professional, and appropriately attentive.
+                Great hotel in a great location. Easy access to all the
+                surrounding historical sites. Staff is fantastic. Will
+                definitely stay at this location during my next stay in Marocco.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="not_view_reviews ellipse">
+        <img
+          src="src/images/ellipse_black.svg"
+          alt="ellipse"
+          class="ellipse_item"
+        />
+        <img src="src/images/ellipse.svg" alt="ellipse" class="ellipse_item" />
+        <img src="src/images/ellipse.svg" alt="ellipse" class="ellipse_item" />
+        <img src="src/images/ellipse.svg" alt="ellipse" class="ellipse_item" />
+      </div>
+    </div>
+    <div class="sign_up_adaptive container not_view_reviews">
+      <img src="src/images/Vector.svg" alt="vector" class="vector_adaptive" />
+      <svg class="sign_logo fill">
+        <use xlink:href="icons.svg#logo" />
+      </svg>
+      <span class="sign_text_adaptive">
+        Sign up and get 20% <br />off your first booking
+      </span>
+      <a href="#" class="install">Install</a>
+    </div>
+    <div class="footer">
+      <div class="container">
+        <div class="footer_elements">
+          <div class="footer_logo">
+            <svg class="footer_adaptive_logo fill">
+              <use xlink:href="icons.svg#logo" />
+            </svg>
+          </div>
+          <div class="footer_menu">
+            <div class="footer_items col-6">
+              <ul class="about">
+                <li class="about_items">About</li>
+                <li class="about_items invisible">
+                  <a href="#" class="footer_links"> How Triphouse works</a>
+                </li>
+                <li class="about_items invisible">
+                  <a href="#" class="footer_links">Careers</a>
+                </li>
+                <li class="about_items invisible">
+                  <a href="#" class="footer_links">Privacy</a>
+                </li>
+                <li class="about_items invisible">
+                  <a href="#" class="footer_links">Terms</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer_items col-6">
+              <ul class="property_types">
+                <li class="property_types_items">Property types</li>
+                <li class="property_types_items invisible">
+                  <a href="#" class="footer_links">Guest houses</a>
+                </li>
+                <li class="property_types_items invisible">
+                  <a href="#" class="footer_links">Hotels</a>
+                </li>
+                <li class="property_types_items invisible">
+                  <a href="#" class="footer_links">Apartments</a>
+                </li>
+                <li class="property_types_items invisible">
+                  <a href="#" class="footer_links">Villas</a>
+                </li>
+                <li class="property_types_items invisible">
+                  <a href="#" class="footer_links">Holiday homes</a>
+                </li>
+                <li class="property_types_items invisible">
+                  <a href="#" class="footer_links">Hostels</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer_items col-6">
+              <ul class="support">
+                <li class="support_items">Support</li>
+                <li class="support_items invisible">
+                  <a href="#" class="footer_links">Contact Customer Service</a>
+                </li>
+                <li class="support_items invisible">
+                  <a href="#" class="footer_links">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="label">
+          <div class="label_items">
+            &copy;2020 Triphouse, Inc. All rights reserved
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script src="libs/slick/slick.min.js"></script>
+    <script type="module" src="src/js/slide.js"></script>
+  <script type="module" src="src/js/main.js"></script>
   </body>
 </html>
