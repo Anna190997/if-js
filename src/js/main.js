@@ -130,25 +130,27 @@ document.querySelector('.change_filter').onclick = function(e) {
   if (target.dataset.plus != undefined) {
     let amount = target.closest('div').querySelector('.amount');
     amount.innerHTML++;
-   if (validation[dataset.minus.firstBtn].min =< amount && validation[dataset.plus.firstBtn].max >= amount) {
+    if (target.dataset.min <= amount && target.dataset.max >= amount) {
       target.setAttribute('disabled', true);
+    }
   }
-  }
-
 
   if (target.dataset.minus != undefined) {
     let amount = target.closest('div').querySelector('.amount');
     amount.innerHTML--;
+    if(target.min <= amount && target.max >= amount){
+      target.setAttribute('disabled', true);
+    }
   }
 
   }
-  if (validation["secondBtn"].min =< amount && validation["secondBtn"].max >= amount) {
-    target.setAttribute('disabled', true);
-  }
-  if (validation["thirdBtn"].min =< amount && validation["thirdBtn"].max >= amount) {
-    target.setAttribute('disabled', true);
-  }
-};
+
+
+
+//   if (validation["thirdBtn"].min =< amount && validation["thirdBtn"].max >= amount) {
+//     target.setAttribute('disabled', true);
+//   }
+// };
 const validation  = {
   firstBtn: {min: 1, max: 30},
   secondBtn: {min: 1, max: 10},
