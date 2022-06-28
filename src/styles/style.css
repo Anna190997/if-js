@@ -355,7 +355,7 @@ header {
   background-color: #FFFFFF;
   position: absolute;
   width: 260px;
-  height: 98px;
+  height: max-content;
   margin-left: 750px;
   margin-top: 158px;
   border-radius: 8px;
@@ -371,6 +371,7 @@ header {
 }
 .children_age{
   margin-left: 19px;
+  margin-bottom: 2px;
   width: 99px;
   height: 30px;
   border: 1px solid #3077C6;;

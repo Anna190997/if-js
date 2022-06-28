@@ -94,7 +94,7 @@ information.appendChild(hotelDiv);
 const btn = document.getElementById('number');
 const formFilter = document.getElementById('filter');
 btn.addEventListener('click', btnClick);
-btn.addEventListener('click', btnDelete);
+// btn.addEventListener('click', btnDelete);
 function btnClick() {
   const classList = formFilter.classList;
   if (classList.contains('hidden')) {
@@ -105,93 +105,83 @@ function btnClick() {
 }
 
 //Add count on button
-const btnPlusFirst = document.getElementById('plus-btn-first');
-const btnMinusFirst = document.getElementById('minus-btn-first');
-const amountFirst = document.getElementById('amount-first');
-const btnPlusSecond = document.getElementById('plus-btn-second');
-const btnMinusSecond = document.getElementById('minus-btn-second');
-const amountSecond = document.getElementById('amount-second');
-const btnPlusThird = document.getElementById('plus-btn-third');
-const btnMinusThird = document.getElementById('minus-btn-third');
-const amountThird = document.getElementById('amount-third');
-btnPlusFirst.addEventListener('click', countPlusFirst);
-btnMinusFirst.addEventListener('click', countMinusFirst);
-btnPlusSecond.addEventListener('click', countPlusSecond);
-btnPlusSecond.addEventListener('click', childrenView);
-btnPlusSecond.addEventListener('click', childrenFilter);
-btnMinusSecond.addEventListener('click', countMinusSecond);
-btnMinusSecond.addEventListener('click', childrenDelete);
-btnPlusThird.addEventListener('click', countPlusThird);
-btnMinusThird.addEventListener('click', countMinusThird);
-function countPlusFirst() {
-  const amountPlusFirst = amountFirst.innerHTML;
-  if (amountPlusFirst <= 29) {
-    amountFirst.innerHTML++;
-    const amountPlusFirst = amountFirst.innerHTML;
-    btn.value = result(amountPlusFirst, amountSecond.innerHTML, amountThird.innerHTML);
-  } else btnPlusFirst.setAttribute('disabled', true);
+// const btnPlusFirst = document.getElementById('plus-btn-first');
+// // const btnMinusFirst = document.getElementById('minus-btn-first');
+// const amountFirst = document.getElementById('amount-first');
+// // const btnPlusSecond = document.getElementById('plus-btn-second');
+// // const btnMinusSecond = document.getElementById('minus-btn-second');
+// // const amountSecond = document.getElementById('amount-second');
+// // const btnPlusThird = document.getElementById('plus-btn-third');
+// // const btnMinusThird = document.getElementById('minus-btn-third');
+// // const amountThird = document.getElementById('amount-third');
+// btnPlusFirst.addEventListener('click', countPlusFirst);
+// // btnMinusFirst.addEventListener('click', countMinusFirst);
+// // btnPlusSecond.addEventListener('click', countPlusSecond);
+// btnPlusSecond.addEventListener('click', childrenView);
+// btnPlusSecond.addEventListener('click', childrenFilter);
+// // btnMinusSecond.addEventListener('click', countMinusSecond);
+// btnMinusSecond.addEventListener('click', childrenDelete);
+// // btnPlusThird.addEventListener('click', countPlusThird);
+// // btnMinusThird.addEventListener('click', countMinusThird);
+
+
+document.querySelector('.change_filter').onclick = function(e) {
+  let target = e.target;
+  if (target.dataset.plus != undefined) {
+    let amount = target.closest('div').querySelector('.amount');
+    amount.innerHTML++;
+   if (validation[dataset.minus.firstBtn].min =< amount && validation[dataset.plus.firstBtn].max >= amount) {
+      target.setAttribute('disabled', true);
+  }
+  }
+
+
+  if (target.dataset.minus != undefined) {
+    let amount = target.closest('div').querySelector('.amount');
+    amount.innerHTML--;
+  }
+
+  }
+  if (validation["secondBtn"].min =< amount && validation["secondBtn"].max >= amount) {
+    target.setAttribute('disabled', true);
+  }
+  if (validation["thirdBtn"].min =< amount && validation["thirdBtn"].max >= amount) {
+    target.setAttribute('disabled', true);
+  }
+};
+const validation  = {
+  firstBtn: {min: 1, max: 30},
+  secondBtn: {min: 1, max: 10},
+  thirdBtn: {min: 1, max: 30},
 }
-function countMinusFirst() {
-  const amountMinusFirst = amountFirst.innerHTML;
-  if (+amountMinusFirst >= 2) {
-    amountFirst.innerHTML--;
-    const amountMinusFirst = amountFirst.innerHTML;
-    btn.value = result(amountMinusFirst, amountSecond.innerHTML, amountThird.innerHTML);
-  }
-}
-function countPlusSecond() {
-  const amountPlusSecond = amountSecond.innerHTML;
-  if (+amountPlusSecond < 10) {
-    amountSecond.innerHTML++;
-    const amountPlusSecond = amountSecond.innerHTML;
-    btn.value = result(amountFirst.innerHTML, amountPlusSecond, amountThird.innerHTML);
-  }
-  if (+amountPlusSecond == 9) {
-    btnPlusSecond.setAttribute('disabled', true);
-  }
-}
-function countMinusSecond() {
-  const amountMinusSecond = amountSecond.innerHTML;
-  if (+amountMinusSecond >= 1) {
-    amountSecond.innerHTML--;
-    const amountMinusSecond = amountSecond.innerHTML;
-    btn.value = result(amountFirst.innerHTML, amountMinusSecond, amountThird.innerHTML);
-  }
-  if (+amountMinusSecond == 0) {
-    btnMinusSecond.setAttribute('disabled', true);
-  }
-  if (+amountMinusSecond === 1) {
-    const ageList = children.classList;
-    if (!ageList.contains('children_hidden')) {
-      ageList.add('children_hidden');
-    }
-  }
-}
+
+
+
+
+
+
+
+
+
+//   if (+amountMinusSecond == 0) {
+//     btnMinusSecond.setAttribute('disabled', true);
+//   }
+//   if (+amountMinusSecond === 1) {
+//     const ageList = children.classList;
+//     if (!ageList.contains('children_hidden')) {
+//       ageList.add('children_hidden');
+//     }
+//   }
+// }
 
 function childrenDelete() {
   children.removeChild(children.lastElementChild);
 }
 
-function countPlusThird() {
-  const amountPlusThird = amountThird.innerHTML;
-  if (+amountPlusThird <= 29) {
-    amountThird.innerHTML++;
-    const amountPlusThird = amountThird.innerHTML;
-    btn.value = result(amountFirst.innerHTML, amountSecond.innerHTML, amountPlusThird);
-  }
-}
-function countMinusThird() {
-  const amountMinusThird = amountThird.innerHTML;
-  if (+amountMinusThird >= 2) {
-    amountThird.innerHTML--;
-    const amountMinusThird = amountThird.innerHTML;
-    btn.value = result(amountFirst.innerHTML, amountSecond.innerHTML, amountMinusThird);
-  }
-}
-const result = (amountFirst, amountSecond, amountThird) => {
-  return `${amountFirst} Adults — ${amountSecond} Children — ${amountThird} Room`;
-};
-
+// const result = (amountFirst, amountSecond, amountThird) => {
+//   return `${amountFirst} Adults — ${amountSecond} Children — ${amountThird} Room`;
+// };
+//
 const children = document.getElementById('children_number');
 function childrenView() {
   const ageList = children.classList;
