@@ -79,7 +79,7 @@ const generateHotel = (imageUrl, name, city, country) => {
 const hotelDiv = document.createElement('div');
 hotelDiv.classList.add('places_items');
 
-let hotelHTML = data
+const hotelHTML = data
   .map((places) => {
     return generateHotel(places.imageUrl, places.name, places.city, places.country);
   })
@@ -92,9 +92,15 @@ information.appendChild(hotelDiv);
 //Add filter of form
 
 const btn = document.getElementById('number');
+const btnAdaptive = document.getElementById('number-adaptive');
 const formFilter = document.getElementById('filter');
+const adults = document.getElementById('adults');
+const children = document.getElementById('children');
+const rooms = document.getElementById('rooms');
 btn.addEventListener('click', btnClick);
-// btn.addEventListener('click', btnDelete);
+btn.addEventListener('click', btnDelete);
+btnAdaptive.addEventListener('click', btnClick);
+btnAdaptive.addEventListener('click', btnDelete);
 function btnClick() {
   const classList = formFilter.classList;
   if (classList.contains('hidden')) {
@@ -105,120 +111,96 @@ function btnClick() {
 }
 
 //Add count on button
-// const btnPlusFirst = document.getElementById('plus-btn-first');
-// // const btnMinusFirst = document.getElementById('minus-btn-first');
-// const amountFirst = document.getElementById('amount-first');
-// // const btnPlusSecond = document.getElementById('plus-btn-second');
-// // const btnMinusSecond = document.getElementById('minus-btn-second');
-// // const amountSecond = document.getElementById('amount-second');
-// // const btnPlusThird = document.getElementById('plus-btn-third');
-// // const btnMinusThird = document.getElementById('minus-btn-third');
-// // const amountThird = document.getElementById('amount-third');
-// btnPlusFirst.addEventListener('click', countPlusFirst);
-// // btnMinusFirst.addEventListener('click', countMinusFirst);
-// // btnPlusSecond.addEventListener('click', countPlusSecond);
-// btnPlusSecond.addEventListener('click', childrenView);
+const amountFirst = document.getElementById('amount-first');
+const btnPlusSecond = document.getElementById('plus-btn-second');
+const btnMinusSecond = document.getElementById('minus-btn-second');
+const amountSecond = document.getElementById('amount-second');
+const amountThird = document.getElementById('amount-third');
+btnPlusSecond.addEventListener('click', childrenView);
 // btnPlusSecond.addEventListener('click', childrenFilter);
-// // btnMinusSecond.addEventListener('click', countMinusSecond);
-// btnMinusSecond.addEventListener('click', childrenDelete);
-// // btnPlusThird.addEventListener('click', countPlusThird);
-// // btnMinusThird.addEventListener('click', countMinusThird);
+btnMinusSecond.addEventListener('click', childrenDelete);
 
+document.querySelector('.change_filter').onclick = function (e) {
+  const target = e.target;
+  if (target.dataset.plus) {
+    const amount = target.closest('div').querySelector('.amount');
 
-document.querySelector('.change_filter').onclick = function(e) {
-  let target = e.target;
-  if (target.dataset.plus != undefined) {
-    let amount = target.closest('div').querySelector('.amount');
-    amount.innerHTML++;
-    if (target.dataset.min <= amount && target.dataset.max >= amount) {
-      target.setAttribute('disabled', true);
+    if (+target.dataset.max > +amount.innerHTML) {
+      amount.innerHTML++;
+      btn.value = result(amountFirst, amountSecond, amountThird);
+      adults.value = resultAdults(amountFirst);
+      children.value = resultChildren(amountSecond);
+      rooms.value = resultRooms(amountThird);
+      if (amount.innerHTML == 10) {
+        btnPlusSecond.setAttribute('disabled', true);
+      }
     }
+    return;
   }
 
-  if (target.dataset.minus != undefined) {
-    let amount = target.closest('div').querySelector('.amount');
-    amount.innerHTML--;
-    if(target.min <= amount && target.max >= amount){
-      target.setAttribute('disabled', true);
+  if (target.dataset.minus) {
+    const amount = target.closest('div').querySelector('.amount');
+
+    if (+target.dataset.min < +amount.innerHTML) {
+      amount.innerHTML--;
+
+      if (amount.innerHTML == 0) {
+        const ageList = children.classList;
+        if (!ageList.contains('children_hidden')) {
+          ageList.add('children_hidden');
+        }
+      }
     }
+    btn.value = result(amountFirst, amountSecond, amountThird);
+    adults.value = resultAdults(amountFirst);
+    children.value = resultChildren(amountSecond);
+    rooms.value = resultRooms(amountThird);
   }
+};
 
-  }
+const result = (amountFirst, amountSecond, amountThird) => {
+  return `${amountFirst.innerHTML}  Adults — ${amountSecond.innerHTML}  Children — ${amountThird.innerHTML}  Room`.replace(
+      / /g,
+      '',
+  );
+};
 
+const resultAdults = (amountFirst) => {
+  return `${amountFirst.innerHTML}`.replace(/ /g, '');
+};
 
+const resultChildren = (amountSecond) => {
+  return `${amountSecond.innerHTML}`.replace(/ /g, '');
+};
 
-//   if (validation["thirdBtn"].min =< amount && validation["thirdBtn"].max >= amount) {
-//     target.setAttribute('disabled', true);
-//   }
-// };
-const validation  = {
-  firstBtn: {min: 1, max: 30},
-  secondBtn: {min: 1, max: 10},
-  thirdBtn: {min: 1, max: 30},
-}
-
-
-
-
-
-
-
-
-
-//   if (+amountMinusSecond == 0) {
-//     btnMinusSecond.setAttribute('disabled', true);
-//   }
-//   if (+amountMinusSecond === 1) {
-//     const ageList = children.classList;
-//     if (!ageList.contains('children_hidden')) {
-//       ageList.add('children_hidden');
-//     }
-//   }
-// }
+const resultRooms = (amountThird) => {
+  return `${amountThird.innerHTML}`.replace(/ /g, '');
+};
 
 function childrenDelete() {
   children.removeChild(children.lastElementChild);
 }
 
-// const result = (amountFirst, amountSecond, amountThird) => {
-//   return `${amountFirst} Adults — ${amountSecond} Children — ${amountThird} Room`;
-// };
-//
-const children = document.getElementById('children_number');
+const childrenAdd = document.getElementById('children_number');
 function childrenView() {
-  const ageList = children.classList;
+  const ageList = childrenAdd.classList;
   if (ageList.contains('children_hidden')) {
     ageList.toggle('children_hidden');
   }
 }
 
 function btnDelete() {
-  const ageList = children.classList;
+  const ageList = childrenAdd.classList;
   if (!ageList.contains('children_hidden')) {
     ageList.add('children_hidden');
   }
 }
 
-function childrenFilter() {
-  const children = document.getElementById('children_number');
-  children.innerHTML += `<select class="children_age">
-            <option>1 years old</option>
-            <option>2 years old</option>
-            <option>3 years old</option>
-            <option>4 years old</option>
-            <option>5 years old</option>
-            <option>6 years old</option>
-            <option>7 years old</option>
-            <option>8 years old</option>
-            <option>9 years old</option>
-            <option>10 years old</option>
-            <option>11 years old</option>
-            <option>12 years old</option>
-            <option>13 years old</option>
-            <option>14 years old</option>
-            <option>15 years old</option>
-            <option>16 years old</option>
-            <option>17 years old</option>
-            </select>
-          `;
-}
+// function childrenFilter() {
+//   const children = document.getElementById('children_number');
+//   let arr = Array(17);
+//
+//   children.innerHTML += `<select class="children_age">
+//   ${arr.forEach(element, (index) => <option> ${index} years old</option>)}
+//            </select>`;
+// }

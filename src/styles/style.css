@@ -304,7 +304,7 @@ header {
   position: absolute;
   width: 260px;
   height: 158px;
-  margin-left: 750px;
+  margin-left: 56%;
   margin-top: 12px;
   border-radius: 8px;
 }
@@ -356,7 +356,7 @@ header {
   position: absolute;
   width: 260px;
   height: max-content;
-  margin-left: 750px;
+  margin-left: 56%;
   margin-top: 158px;
   border-radius: 8px;
 }
@@ -934,6 +934,17 @@ button.slick-prev {
     padding: 0 20px;
   }
 }
+@media screen and (max-width: 685px){
+  .filter{
+    background-color: aliceblue;
+    margin-left: 50%;
+  }
+  .children_number{
+    background-color: aliceblue;
+    position: absolute;
+    margin-left: 50%;
+  }
+}
 @media screen and (max-width: 628px) {
   ::placeholder {
     font-size: 12px;
@@ -947,6 +958,12 @@ button.slick-prev {
   }
   .account {
     padding-right: 16px;
+  }
+  .filter{
+    margin-left: 40%;
+  }
+  .children_number{
+    margin-left: 40%;
   }
   .night {
     padding-right: 16px;
@@ -1028,6 +1045,9 @@ button.slick-prev {
   }
 }
 @media screen and (max-width: 500px) {
+  .line:after{
+    display: none;
+  }
   .container {
     padding-left: 18px;
     padding-right: 18px;
@@ -1248,6 +1268,9 @@ button.slick-prev {
 @media screen and (max-width: 360px) {
   ::placeholder {
     padding-top: 18%;
+  }
+  .filter, .children_number{
+    margin-left: 10%;
   }
   .adults::placeholder,
   .children::placeholder,
