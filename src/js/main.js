@@ -117,7 +117,7 @@ const btnMinusSecond = document.getElementById('minus-btn-second');
 const amountSecond = document.getElementById('amount-second');
 const amountThird = document.getElementById('amount-third');
 btnPlusSecond.addEventListener('click', childrenView);
-// btnPlusSecond.addEventListener('click', childrenFilter);
+btnPlusSecond.addEventListener('click', childrenFilter);
 btnMinusSecond.addEventListener('click', childrenDelete);
 
 document.querySelector('.change_filter').onclick = function (e) {
@@ -145,7 +145,7 @@ document.querySelector('.change_filter').onclick = function (e) {
       amount.innerHTML--;
 
       if (amount.innerHTML == 0) {
-        const ageList = children.classList;
+        const ageList = childrenAdd.classList;
         if (!ageList.contains('children_hidden')) {
           ageList.add('children_hidden');
         }
@@ -196,11 +196,11 @@ function btnDelete() {
   }
 }
 
-// function childrenFilter() {
-//   const children = document.getElementById('children_number');
-//   let arr = Array(17);
-//
-//   children.innerHTML += `<select class="children_age">
-//   ${arr.forEach(element, (index) => <option> ${index} years old</option>)}
-//            </select>`;
-// }
+function childrenFilter() {
+  const children = document.getElementById('children_number');
+  let arr = Array(17);
+
+  children.innerHTML += `<select class="children_age">
+  ${arr.forEach(element, (index) => <option> ${index} years old</option>)}
+           </select>`;
+}
