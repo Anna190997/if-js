@@ -89,18 +89,18 @@ hotelDiv.innerHTML = hotelHTML;
 const information = document.querySelector('.places');
 information.appendChild(hotelDiv);
 
-//Add filter of form
-
 const btn = document.getElementById('number');
 const btnAdaptive = document.getElementById('number-adaptive');
 const formFilter = document.getElementById('filter');
 const adults = document.getElementById('adults');
 const children = document.getElementById('children');
 const rooms = document.getElementById('rooms');
-btn.addEventListener('click', btnClick);
-btn.addEventListener('click', btnDelete);
-btnAdaptive.addEventListener('click', btnClick);
-btnAdaptive.addEventListener('click', btnDelete);
+const amountFirst = document.getElementById('amount-first');
+const btnPlusSecond = document.getElementById('plus-btn-second');
+const btnMinusSecond = document.getElementById('minus-btn-second');
+const amountSecond = document.getElementById('amount-second');
+const amountThird = document.getElementById('amount-third');
+
 function btnClick() {
   const classList = formFilter.classList;
   if (classList.contains('hidden')) {
@@ -109,16 +109,8 @@ function btnClick() {
     classList.add('hidden');
   }
 }
-
-//Add count on button
-const amountFirst = document.getElementById('amount-first');
-const btnPlusSecond = document.getElementById('plus-btn-second');
-const btnMinusSecond = document.getElementById('minus-btn-second');
-const amountSecond = document.getElementById('amount-second');
-const amountThird = document.getElementById('amount-third');
-btnPlusSecond.addEventListener('click', childrenView);
-btnPlusSecond.addEventListener('click', childrenFilter);
-btnMinusSecond.addEventListener('click', childrenDelete);
+btn.addEventListener('click', btnClick);
+btnAdaptive.addEventListener('click', btnClick);
 
 document.querySelector('.change_filter').onclick = function (e) {
   const target = e.target;
@@ -128,9 +120,9 @@ document.querySelector('.change_filter').onclick = function (e) {
     if (+target.dataset.max > +amount.innerHTML) {
       amount.innerHTML++;
       btn.value = result(amountFirst, amountSecond, amountThird);
-      adults.value = resultAdults(amountFirst);
-      children.value = resultChildren(amountSecond);
-      rooms.value = resultRooms(amountThird);
+      adults.value = amountFirst.innerHTML.replace(/ /g, '');
+      children.value = amountSecond.innerHTML.replace(/ /g, '');
+      rooms.value = amountThird.innerHTML.replace(/ /g, '');
       if (amount.innerHTML == 10) {
         btnPlusSecond.setAttribute('disabled', true);
       }
@@ -152,34 +144,18 @@ document.querySelector('.change_filter').onclick = function (e) {
       }
     }
     btn.value = result(amountFirst, amountSecond, amountThird);
-    adults.value = resultAdults(amountFirst);
-    children.value = resultChildren(amountSecond);
-    rooms.value = resultRooms(amountThird);
+    adults.value = amountFirst.innerHTML.replace(/ /g, '');
+    children.value = amountSecond.innerHTML.replace(/ /g, '');
+    rooms.value = amountThird.innerHTML.replace(/ /g, '');
   }
 };
 
 const result = (amountFirst, amountSecond, amountThird) => {
   return `${amountFirst.innerHTML}  Adults — ${amountSecond.innerHTML}  Children — ${amountThird.innerHTML}  Room`.replace(
-      / /g,
-      '',
+    / /g,
+    '',
   );
 };
-
-const resultAdults = (amountFirst) => {
-  return `${amountFirst.innerHTML}`.replace(/ /g, '');
-};
-
-const resultChildren = (amountSecond) => {
-  return `${amountSecond.innerHTML}`.replace(/ /g, '');
-};
-
-const resultRooms = (amountThird) => {
-  return `${amountThird.innerHTML}`.replace(/ /g, '');
-};
-
-function childrenDelete() {
-  children.removeChild(children.lastElementChild);
-}
 
 const childrenAdd = document.getElementById('children_number');
 function childrenView() {
@@ -188,19 +164,40 @@ function childrenView() {
     ageList.toggle('children_hidden');
   }
 }
-
+btnPlusSecond.addEventListener('click', childrenView);
 function btnDelete() {
   const ageList = childrenAdd.classList;
   if (!ageList.contains('children_hidden')) {
     ageList.add('children_hidden');
   }
 }
-
+btn.addEventListener('click', btnDelete);
+btnAdaptive.addEventListener('click', btnDelete);
+const childrenNumber = document.getElementById('children_number');
 function childrenFilter() {
-  const children = document.getElementById('children_number');
-  let arr = Array(17);
-
-  children.innerHTML += `<select class="children_age">
-  ${arr.forEach(element, (index) => <option> ${index} years old</option>)}
-           </select>`;
+  childrenNumber.innerHTML += `<select class="children_age">
+            <option>1 years old</option>
+            <option>2 years old</option>
+            <option>3 years old</option>
+            <option>4 years old</option>
+            <option>5 years old</option>
+            <option>6 years old</option>
+            <option>7 years old</option>
+            <option>8 years old</option>
+            <option>9 years old</option>
+            <option>10 years old</option>
+            <option>11 years old</option>
+            <option>12 years old</option>
+            <option>13 years old</option>
+            <option>14 years old</option>
+            <option>15 years old</option>
+            <option>16 years old</option>
+            <option>17 years old</option>
+            </select>
+          `;
 }
+btnPlusSecond.addEventListener('click', childrenFilter);
+function childrenDelete() {
+  childrenNumber.removeChild(childrenNumber.lastElementChild);
+}
+btnMinusSecond.addEventListener('click', childrenDelete);
