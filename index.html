@@ -44,28 +44,29 @@
         <form class="informations invisible">
           <div class="form_label">
             <label for="destination" class="label_form"
-              >Your destination or hotel name</label
+            >Your destination or hotel name</label
             >
             <label for="date" class="label_form">Check-in — Check-out</label
             ><br />
           </div>
           <div class="informations_items">
             <input
-              class="destination col-1 col-1-s"
-              type="text"
-              id="destination"
-              placeholder="New York"
+                    class="destination col-1 col-1-s"
+                    type="text"
+                    id="destination"
+                    placeholder="New York"
             />
             <input
-              class="date col-2 col-2-s"
-              type="text"
-              id="date"
-              placeholder="Tue 15 Sept — Sat 19 Sept"
+                    class="date col-2 col-2-s"
+                    type="text"
+                    id="date"
+                    placeholder="Tue 15 Sept — Sat 19 Sept"
             />
             <input
-              class="number col-3 col-3-s"
-              type="text"
-              placeholder="2 Adults — 0 Children — 1 Room"
+                    class="number col-3 col-3-s"
+                    id="number"
+                    type="text"
+                    placeholder="2 Adults — 0 Children — 1 Room"
             />
             <button type="submit" class="submit col-4 col-4-s">Search</button>
           </div>
@@ -74,58 +75,101 @@
           <div class="destination_items">
             <img src="src/images/glass.svg" alt="glass" class="glass" />
             <input
-              class="destination_adaptive"
-              type="text"
-              placeholder="Your destination or hotel name"
+                    class="destination_adaptive"
+                    type="text"
+                    placeholder="Your destination or hotel name"
             />
           </div>
           <div class="period">
             <label
-              for="start"
-              class="label_adaptive_form label_adaptive_form_first"
-              >Check-in date</label
+                    for="start"
+                    class="label_adaptive_form label_adaptive_form_first"
+            >Check-in date</label
             >
             <input
-              id="start"
-              type="text"
-              class="start"
-              placeholder="Tue 15 Sept 2020"
+                    id="start"
+                    type="text"
+                    class="start"
+                    placeholder="Tue 15 Sept 2020"
             />
             <label
-              for="end"
-              class="label_adaptive_form label_adaptive_form_second"
-              >Check-out date</label
+                    for="end"
+                    class="label_adaptive_form label_adaptive_form_second"
+            >Check-out date</label
             >
             <input
-              id="end"
-              type="text"
-              class="end"
-              placeholder="Sat 19 Sept 2020"
+                    id="end"
+                    type="text"
+                    class="end"
+                    placeholder="Sat 19 Sept 2020"
             />
           </div>
-          <div class="number_guests">
+          <div class="number_guests" id="number-adaptive">
             <label
-              for="adults"
-              class="label_adaptive_form label_adaptive_form_third"
-              >Adults</label
+                    for="adults"
+                    class="label_adaptive_form label_adaptive_form_third"
+            >Adults</label
             >
             <input id="adults" type="text" class="adults" placeholder="2" />
             <hr class="first" />
             <label
-              for="children"
-              class="label_adaptive_form label_adaptive_form_fourth"
-              >Children</label
+                    for="children"
+                    class="label_adaptive_form label_adaptive_form_fourth"
+            >Children</label
             >
             <input id="children" type="text" class="children" placeholder="0" />
             <hr class="second" />
             <label
-              for="rooms"
-              class="label_adaptive_form label_adaptive_form_fifth"
-              >Rooms</label
+                    for="rooms"
+                    class="label_adaptive_form label_adaptive_form_fifth"
+            >Rooms</label
             >
             <input id="rooms" type="text" class="rooms" placeholder="1" />
           </div>
           <button class="button_adaptive_form">Search</button>
+        </form>
+        <form class="filter hidden" id="filter">
+          <div class="filter_wrapper">
+            <div class="criteria_filter">
+              <div class="name_filter">
+                Adults
+              </div>
+              <div class="name_filter">
+                Children
+              </div>
+              <div class="name_filter">
+                Rooms</br>
+              </div>
+            </div>
+            <div class="change_filter" id="change_filter">
+              <div class="adults_filter" id="minus-btn">
+                <input type="button" class="remove_filter" id="minus-btn-first" value="-" data-minus="firstBtn" data-min="1" data-max="30"/>
+                <div class="amount" id="amount-first">
+                  2
+                </div>
+                <input type="button" class="add_filter" id="plus-btn-first" value="+" data-plus="firstBtn" data-min="1" data-max="30"/>
+              </div>
+              <div class="children_filter">
+                <input type="button" class="remove_filter" value="-" id="minus-btn-second" data-minus="secondBtn" data-min="0" data-max="10"/>
+                <div class="amount" id="amount-second">
+                  0
+                </div>
+                <input type="button" class="add_filter" value="+" id="plus-btn-second" data-plus="secondBtn" data-min="0" data-max="10"/>
+              </div>
+              <div class="rooms_filter">
+                <input type="button" class="remove_filter" value="-" id="minus-btn-third" data-minus="thirdBtn" data-min="1" data-max="30"/>
+                <div class="amount" id="amount-third">
+                  1
+                </div>
+                <input type="button" class="add_filter" value="+" id="plus-btn-third" data-plus="thirdBtn" data-min="1" data-max="30"/>
+              </div>
+            </div>
+          </div>
+        </form>
+        <form class="children_number children_hidden" id="children_number">
+          <div class="children_number_text">
+            What is the age of the child you’re travelling with?
+          </div>
         </form>
         <div class="application">
           <a href="#" class="google_link">

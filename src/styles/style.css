@@ -218,10 +218,6 @@ header {
 .label_adaptive_form_fifth {
   padding-left: 68%;
 }
-input:hover {
-  border: none;
-  border-radius: 0;
-}
 .first {
   position: absolute;
   background-color: #bfbfbf;
@@ -273,11 +269,11 @@ input:hover {
   font-size: 18px;
   text-align: left;
 }
-input:hover {
+.destination:hover, .date:hover, .number:hover {
   border: 3px solid #f5bd41;
   border-radius: 8px;
 }
-input:focus {
+.destination:focus, .date:focus, .number:focus {
   color: #383838;
   font-family: Roboto, sans-serif;
   font-weight: 400;
@@ -302,6 +298,83 @@ input:focus {
   display: flex;
   justify-content: center;
   padding: 120px 0;
+}
+.filter{
+  background-color: #FFFFFF;
+  position: absolute;
+  width: 260px;
+  height: 158px;
+  margin-left: 56%;
+  margin-top: 12px;
+  border-radius: 8px;
+}
+.hidden{
+  display: none;
+}
+.filter_wrapper{
+  margin: 22px;
+  display: flex;
+  flex-direction: row;
+}
+.criteria_filter{
+  margin-top: 6px;
+}
+.change_filter{
+  margin-left: 48px;
+}
+.adults_filter, .children_filter, .rooms_filter{
+  display: flex;
+  flex-direction: row;
+}
+.name_filter, .amount{
+  font-family: Roboto-Regular, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+  padding-bottom: 23px;
+}
+.amount{
+  margin-top: 6px;
+}
+.add_filter, .remove_filter{
+  width: 30px;
+  height: 30px;
+  background: #FFFFFF;
+  border: 1px solid #3077C6;
+  color: #3077C6;
+  font-size: 18px;
+  cursor: pointer;
+}
+.remove_filter{
+  margin-right: 18px;
+}
+.add_filter{
+  margin-left: 18px;
+}
+.children_number{
+  background-color: #FFFFFF;
+  position: absolute;
+  width: 260px;
+  height: max-content;
+  margin-left: 56%;
+  margin-top: 158px;
+  border-radius: 8px;
+}
+.children_hidden{
+  display: none;
+}
+.children_number_text{
+  margin: 22px 22px 12px 19px;
+  font-family: Roboto-Regular, sans-serif;
+  font-size: 12px;
+  color: #333333;
+}
+.children_age{
+  margin-left: 19px;
+  margin-bottom: 2px;
+  width: 99px;
+  height: 30px;
+  border: 1px solid #3077C6;;
 }
 /*What do we offer styles*/
 .title {
@@ -861,6 +934,17 @@ button.slick-prev {
     padding: 0 20px;
   }
 }
+@media screen and (max-width: 685px){
+  .filter{
+    background-color: aliceblue;
+    margin-left: 50%;
+  }
+  .children_number{
+    background-color: aliceblue;
+    position: absolute;
+    margin-left: 50%;
+  }
+}
 @media screen and (max-width: 628px) {
   ::placeholder {
     font-size: 12px;
@@ -874,6 +958,12 @@ button.slick-prev {
   }
   .account {
     padding-right: 16px;
+  }
+  .filter{
+    margin-left: 40%;
+  }
+  .children_number{
+    margin-left: 40%;
   }
   .night {
     padding-right: 16px;
@@ -955,6 +1045,9 @@ button.slick-prev {
   }
 }
 @media screen and (max-width: 500px) {
+  .line:after{
+    display: none;
+  }
   .container {
     padding-left: 18px;
     padding-right: 18px;
@@ -979,10 +1072,6 @@ button.slick-prev {
   .end {
     padding-top: 10px;
     padding-left: 10px;
-  }
-  input:hover {
-    border: none;
-    border-radius: 0;
   }
   .night {
     width: 16px;
@@ -1179,6 +1268,9 @@ button.slick-prev {
 @media screen and (max-width: 360px) {
   ::placeholder {
     padding-top: 18%;
+  }
+  .filter, .children_number{
+    margin-left: 10%;
   }
   .adults::placeholder,
   .children::placeholder,
