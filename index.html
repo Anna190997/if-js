@@ -1,15 +1,10 @@
 <!DOCTYPE html>
-<html
-  lang="eng"
-  xmlns="http://www.w3.org/1999/html"
-  xmlns="http://www.w3.org/1999/html"
->
+<html lang="eng" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/styles/style.css" />
-      <link rel="stylesheet" href="libs/slick/slick.css"/>
-      <link rel="stylesheet" href="libs/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="libs/chief-slider.min.css" />
     <title>TripHouse</title>
   </head>
   <body>
@@ -43,30 +38,27 @@
         </div>
         <form class="informations invisible">
           <div class="form_label">
-            <label for="destination" class="label_form"
-            >Your destination or hotel name</label
-            >
-            <label for="date" class="label_form">Check-in — Check-out</label
-            ><br />
+            <label for="destination" class="label_form">Your destination or hotel name</label>
+            <label for="date" class="label_form">Check-in — Check-out</label><br />
           </div>
           <div class="informations_items">
             <input
-                    class="destination col-1 col-1-s"
-                    type="text"
-                    id="destination"
-                    placeholder="New York"
+              class="destination col-1 col-1-s"
+              type="text"
+              id="destination"
+              placeholder="New York"
             />
             <input
-                    class="date col-2 col-2-s"
-                    type="text"
-                    id="date"
-                    placeholder="Tue 15 Sept — Sat 19 Sept"
+              class="date col-2 col-2-s"
+              type="text"
+              id="date"
+              placeholder="Tue 15 Sept — Sat 19 Sept"
             />
             <input
-                    class="number col-3 col-3-s"
-                    id="number"
-                    type="text"
-                    placeholder="2 Adults — 0 Children — 1 Room"
+              class="number col-3 col-3-s"
+              id="number"
+              type="text"
+              placeholder="2 Adults — 0 Children — 1 Room"
             />
             <button type="submit" class="submit col-4 col-4-s">Search</button>
           </div>
@@ -75,55 +67,31 @@
           <div class="destination_items">
             <img src="src/images/glass.svg" alt="glass" class="glass" />
             <input
-                    class="destination_adaptive"
-                    type="text"
-                    placeholder="Your destination or hotel name"
+              class="destination_adaptive"
+              type="text"
+              placeholder="Your destination or hotel name"
             />
           </div>
           <div class="period">
-            <label
-                    for="start"
-                    class="label_adaptive_form label_adaptive_form_first"
-            >Check-in date</label
+            <label for="start" class="label_adaptive_form label_adaptive_form_first"
+              >Check-in date</label
             >
-            <input
-                    id="start"
-                    type="text"
-                    class="start"
-                    placeholder="Tue 15 Sept 2020"
-            />
-            <label
-                    for="end"
-                    class="label_adaptive_form label_adaptive_form_second"
-            >Check-out date</label
+            <input id="start" type="text" class="start" placeholder="Tue 15 Sept 2020" />
+            <label for="end" class="label_adaptive_form label_adaptive_form_second"
+              >Check-out date</label
             >
-            <input
-                    id="end"
-                    type="text"
-                    class="end"
-                    placeholder="Sat 19 Sept 2020"
-            />
+            <input id="end" type="text" class="end" placeholder="Sat 19 Sept 2020" />
           </div>
           <div class="number_guests" id="number-adaptive">
-            <label
-                    for="adults"
-                    class="label_adaptive_form label_adaptive_form_third"
-            >Adults</label
-            >
+            <label for="adults" class="label_adaptive_form label_adaptive_form_third">Adults</label>
             <input id="adults" type="text" class="adults" placeholder="2" />
             <hr class="first" />
-            <label
-                    for="children"
-                    class="label_adaptive_form label_adaptive_form_fourth"
-            >Children</label
+            <label for="children" class="label_adaptive_form label_adaptive_form_fourth"
+              >Children</label
             >
             <input id="children" type="text" class="children" placeholder="0" />
             <hr class="second" />
-            <label
-                    for="rooms"
-                    class="label_adaptive_form label_adaptive_form_fifth"
-            >Rooms</label
-            >
+            <label for="rooms" class="label_adaptive_form label_adaptive_form_fifth">Rooms</label>
             <input id="rooms" type="text" class="rooms" placeholder="1" />
           </div>
           <button class="button_adaptive_form">Search</button>
@@ -131,37 +99,73 @@
         <form class="filter hidden" id="filter">
           <div class="filter_wrapper">
             <div class="criteria_filter">
-              <div class="name_filter">
-                Adults
-              </div>
-              <div class="name_filter">
-                Children
-              </div>
-              <div class="name_filter">
-                Rooms</br>
-              </div>
+              <div class="name_filter">Adults</div>
+              <div class="name_filter">Children</div>
+              <div class="name_filter">Rooms<br /></div>
             </div>
             <div class="change_filter" id="change_filter">
               <div class="adults_filter" id="minus-btn">
-                <input type="button" class="remove_filter" id="minus-btn-first" value="-" data-minus="firstBtn" data-min="1" data-max="30"/>
-                <div class="amount" id="amount-first">
-                  2
-                </div>
-                <input type="button" class="add_filter" id="plus-btn-first" value="+" data-plus="firstBtn" data-min="1" data-max="30"/>
+                <input
+                  type="button"
+                  class="remove_filter"
+                  id="minus-btn-first"
+                  value="-"
+                  data-minus="firstBtn"
+                  data-min="1"
+                  data-max="30"
+                />
+                <div class="amount" id="amount-first">2</div>
+                <input
+                  type="button"
+                  class="add_filter"
+                  id="plus-btn-first"
+                  value="+"
+                  data-plus="firstBtn"
+                  data-min="1"
+                  data-max="30"
+                />
               </div>
               <div class="children_filter">
-                <input type="button" class="remove_filter" value="-" id="minus-btn-second" data-minus="secondBtn" data-min="0" data-max="10"/>
-                <div class="amount" id="amount-second">
-                  0
-                </div>
-                <input type="button" class="add_filter" value="+" id="plus-btn-second" data-plus="secondBtn" data-min="0" data-max="10"/>
+                <input
+                  type="button"
+                  class="remove_filter"
+                  value="-"
+                  id="minus-btn-second"
+                  data-minus="secondBtn"
+                  data-min="0"
+                  data-max="10"
+                />
+                <div class="amount" id="amount-second">0</div>
+                <input
+                  type="button"
+                  class="add_filter"
+                  value="+"
+                  id="plus-btn-second"
+                  data-plus="secondBtn"
+                  data-min="0"
+                  data-max="10"
+                />
               </div>
               <div class="rooms_filter">
-                <input type="button" class="remove_filter" value="-" id="minus-btn-third" data-minus="thirdBtn" data-min="1" data-max="30"/>
-                <div class="amount" id="amount-third">
-                  1
-                </div>
-                <input type="button" class="add_filter" value="+" id="plus-btn-third" data-plus="thirdBtn" data-min="1" data-max="30"/>
+                <input
+                  type="button"
+                  class="remove_filter"
+                  value="-"
+                  id="minus-btn-third"
+                  data-minus="thirdBtn"
+                  data-min="1"
+                  data-max="30"
+                />
+                <div class="amount" id="amount-third">1</div>
+                <input
+                  type="button"
+                  class="add_filter"
+                  value="+"
+                  id="plus-btn-third"
+                  data-plus="thirdBtn"
+                  data-min="1"
+                  data-max="30"
+                />
               </div>
             </div>
           </div>
@@ -219,8 +223,16 @@
         <div class="homes_loves">
           <h2 class="title">Homes guests loves</h2>
         </div>
-        <div class="places">
+        <div class="slider">
+          <div class="slider__container">
+            <div class="slider__wrapper">
+              <div class="places">
+                <div class="places_items slider__items"></div>
+              </div>
+            </div>
           </div>
+          <a href="#" class="slider__control" data-slide="next"></a>
+        </div>
       </div>
     </div>
 
@@ -236,22 +248,14 @@
       <div class="regions_items">
         <div class="regions_for_visit">
           <div class="regions_offer col-7 col-7-s">
-            <img
-              src="src/images/Maldives.png"
-              alt="Maldives"
-              class="places_image opacity"
-            />
+            <img src="src/images/Maldives.png" alt="Maldives" class="places_image opacity" />
             <button class="book_now not_view">Book now</button>
             <div class="name_hotel">
               <a href="#" class="hotel_links">Maldives</a>
             </div>
           </div>
           <div class="regions_offer col-7 col-7-s">
-            <img
-              src="src/images/Spain-1.png"
-              alt="Spain"
-              class="places_image opacity"
-            />
+            <img src="src/images/Spain-1.png" alt="Spain" class="places_image opacity" />
             <div class="name_hotel">
               <a href="#" class="hotel_links">Spain</a>
             </div>
@@ -259,11 +263,7 @@
             <button class="book_now not_view">Book now</button>
           </div>
           <div class="regions_offer col-7 col-7-s not_view">
-            <img
-              src="src/images/Norway.png"
-              alt="Norway"
-              class="places_image opacity"
-            />
+            <img src="src/images/Norway.png" alt="Norway" class="places_image opacity" />
             <button class="book_now not_view">Book now</button>
             <div class="name_hotel">
               <a href="#" class="hotel_links">Norway</a>
@@ -271,11 +271,7 @@
             <img src="src/images/view_more.svg" alt="more" class="view_more" />
           </div>
           <div class="regions_offer col-7 col-7-s not_view">
-            <img
-              src="src/images/Island.png"
-              alt="Island"
-              class="places_image opacity"
-            />
+            <img src="src/images/Island.png" alt="Island" class="places_image opacity" />
             <button class="book_now not_view">Book now</button>
             <div class="name_hotel">
               <a href="#" class="hotel_links">Island</a>
@@ -286,9 +282,7 @@
       <div class="sign_up not_view">
         <div class="sign_up_items">
           <img src="src/images/user.svg" alt="user" class="user" />
-          <span class="sign_text">
-            Sign up and get 20% off your first booking
-          </span>
+          <span class="sign_text"> Sign up and get 20% off your first booking </span>
           <button class="button_sign">Sign up</button>
           <img src="src/images/Vector.svg" alt="vector" class="vector" />
         </div>
@@ -297,8 +291,7 @@
     <div class="container reviews">
       <h2 class="title">
         <span class="invisible">Guests</span>
-        <span class="not_view_reviews">R</span
-        ><span class="invisible">r</span>eviews
+        <span class="not_view_reviews">R</span><span class="invisible">r</span>eviews
       </h2>
       <div class="reviews_content">
         <div class="reviews_content_items">
@@ -309,14 +302,10 @@
               <div class="place_information">
                 <div class="hotel_information">
                   <div class="hotel_reviews">
-                    <a href="#" class="hotel_reviews_links"
-                      >Ubud Bali Resort&SPA</a
-                    >
+                    <a href="#" class="hotel_reviews_links">Ubud Bali Resort&SPA</a>
                   </div>
                   <div class="location_reviews">
-                    <a href="#" class="location_reviews_links"
-                      >Bali, Indonesia</a
-                    >
+                    <a href="#" class="location_reviews_links">Bali, Indonesia</a>
                   </div>
                 </div>
                 <div class="popularity_hotel">
@@ -328,37 +317,24 @@
               </div>
               <div class="person">
                 <div class="person_icon">
-                  <img
-                    src="src/images/people.svg"
-                    alt="user"
-                    class="user_reviews"
-                  />
+                  <img src="src/images/people.svg" alt="user" class="user_reviews" />
                 </div>
                 <div class="person_data">
                   <span class="reviews_name">Hanna Ivanova</span>
                   <span class="reviews_places">
-                    <img
-                      src="src/images/Ukraine.png"
-                      alt="Ukraine"
-                      class="country"
-                    />Ukraine</span
+                    <img src="src/images/Ukraine.png" alt="Ukraine" class="country" />Ukraine</span
                   >
                 </div>
               </div>
               <p class="review">
-                Great location, really pleasant and clean rooms, but the thing
-                that makes this such a good place to stay are the staff. All of
-                the people are incredibly helpful and generous with their time
-                and advice.
+                Great location, really pleasant and clean rooms, but the thing that makes this such
+                a good place to stay are the staff. All of the people are incredibly helpful and
+                generous with their time and advice.
               </p>
             </div>
           </div>
           <div class="reviews_items col-8 invisible">
-            <img
-              src="src/images/Rotterdam.png"
-              alt="Rotterdam"
-              class="reviews_photo"
-            />
+            <img src="src/images/Rotterdam.png" alt="Rotterdam" class="reviews_photo" />
             <div class="price">From 40 USD</div>
             <div class="block_reviews">
               <div class="place_information">
@@ -367,9 +343,7 @@
                     <a href="#" class="hotel_reviews_links">King Kong Hostel</a>
                   </div>
                   <div class="location_reviews">
-                    <a href="#" class="location_reviews_links"
-                      >Rotterdam, Netherlands</a
-                    >
+                    <a href="#" class="location_reviews_links">Rotterdam, Netherlands</a>
                   </div>
                 </div>
                 <div class="popularity_hotel">
@@ -381,38 +355,25 @@
               </div>
               <div class="person">
                 <div class="person_icon">
-                  <img
-                    src="src/images/people.svg"
-                    alt="user"
-                    class="user_reviews"
-                  />
+                  <img src="src/images/people.svg" alt="user" class="user_reviews" />
                 </div>
                 <div class="person_data">
                   <span class="reviews_name">Adam Smith</span>
                   <span class="reviews_places">
-                    <img
-                      src="src/images/USA.png"
-                      alt="USA"
-                      class="country"
-                    />USA</span
+                    <img src="src/images/USA.png" alt="USA" class="country" />USA</span
                   >
                 </div>
               </div>
               <p class="review">
-                I've been in this hostel for a month and here is the best hostel
-                of all Excellent management of excellent and ethical staff and
-                bedrooms Bathrooms are always clean and excellent Most
-                importantly, those who work here are kind and good-natured.
+                I've been in this hostel for a month and here is the best hostel of all Excellent
+                management of excellent and ethical staff and bedrooms Bathrooms are always clean
+                and excellent Most importantly, those who work here are kind and good-natured.
               </p>
             </div>
           </div>
           <div class="reviews_items col-8 invisible">
             <img src="src/images/Ourlka.png" alt="Ourlka" class="reviews_photo" />
-            <img
-              src="src/images/more.svg"
-              class="more_reviews"
-              alt="more_reviews"
-            />
+            <img src="src/images/more.svg" class="more_reviews" alt="more_reviews" />
             <div class="price">From 100 USD</div>
             <div class="block_reviews">
               <div class="place_information">
@@ -421,9 +382,7 @@
                     <a href="#" class="hotel_reviews_links">Rokoko Hotel</a>
                   </div>
                   <div class="location_reviews">
-                    <a href="#" class="location_reviews_links"
-                      >Ourika, Marocco</a
-                    >
+                    <a href="#" class="location_reviews_links">Ourika, Marocco</a>
                   </div>
                 </div>
                 <div class="popularity_hotel">
@@ -435,11 +394,7 @@
               </div>
               <div class="person">
                 <div class="person_icon">
-                  <img
-                    src="src/images/people.svg"
-                    alt="user"
-                    class="user_reviews"
-                  />
+                  <img src="src/images/people.svg" alt="user" class="user_reviews" />
                 </div>
                 <div class="person_data">
                   <span class="reviews_name">Anika Messer</span>
@@ -453,21 +408,16 @@
                 </div>
               </div>
               <p class="review">
-                Efficient, friendly, professional, and appropriately attentive.
-                Great hotel in a great location. Easy access to all the
-                surrounding historical sites. Staff is fantastic. Will
-                definitely stay at this location during my next stay in Marocco.
+                Efficient, friendly, professional, and appropriately attentive. Great hotel in a
+                great location. Easy access to all the surrounding historical sites. Staff is
+                fantastic. Will definitely stay at this location during my next stay in Marocco.
               </p>
             </div>
           </div>
         </div>
       </div>
       <div class="not_view_reviews ellipse">
-        <img
-          src="src/images/ellipse_black.svg"
-          alt="ellipse"
-          class="ellipse_item"
-        />
+        <img src="src/images/ellipse_black.svg" alt="ellipse" class="ellipse_item" />
         <img src="src/images/ellipse.svg" alt="ellipse" class="ellipse_item" />
         <img src="src/images/ellipse.svg" alt="ellipse" class="ellipse_item" />
         <img src="src/images/ellipse.svg" alt="ellipse" class="ellipse_item" />
@@ -476,11 +426,9 @@
     <div class="sign_up_adaptive container not_view_reviews">
       <img src="src/images/Vector.svg" alt="vector" class="vector_adaptive" />
       <svg class="sign_logo fill">
-        <use xlink:href="icons.svg#logo" />
+        <use xlink:href="src/icons.svg#logo" />
       </svg>
-      <span class="sign_text_adaptive">
-        Sign up and get 20% <br />off your first booking
-      </span>
+      <span class="sign_text_adaptive"> Sign up and get 20% <br />off your first booking </span>
       <a href="#" class="install">Install</a>
     </div>
     <div class="footer">
@@ -488,7 +436,7 @@
         <div class="footer_elements">
           <div class="footer_logo">
             <svg class="footer_adaptive_logo fill">
-              <use xlink:href="icons.svg#logo" />
+              <use xlink:href="src/icons.svg#logo" />
             </svg>
           </div>
           <div class="footer_menu">
@@ -546,15 +494,18 @@
           </div>
         </div>
         <div class="label">
-          <div class="label_items">
-            &copy;2020 Triphouse, Inc. All rights reserved
-          </div>
+          <div class="label_items">&copy;2020 Triphouse, Inc. All rights reserved</div>
         </div>
       </div>
     </div>
-    <script src="libs/jquery-3.6.0.min.js"></script>
-    <script src="libs/slick/slick.min.js"></script>
-    <script type="module" src="src/js/slide.js"></script>
-  <script type="module" src="src/js/main.js"></script>
+    <script type="module" src="src/js/main.js"></script>
+    <script defer src="/libs/chief-slider.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const slider = new ChiefSlider('.slider', {
+          loop: true,
+        });
+      });
+    </script>
   </body>
 </html>
