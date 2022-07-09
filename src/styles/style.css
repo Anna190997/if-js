@@ -202,6 +202,7 @@ header {
   color: #ffffff;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
 }
 .label_adaptive_form_first {
   padding-left: 3%;
@@ -261,6 +262,7 @@ header {
   font-family: Roboto, sans-serif;
   font-size: 24px;
   font-weight: 500;
+  cursor: pointer;
 }
 ::placeholder {
   color: #383838;
@@ -311,6 +313,9 @@ header {
   margin-left: 750px;
   margin-top: 12px;
   border-radius: 8px;
+}
+.hide {
+  display: none;
 }
 .hidden {
   display: none;
@@ -384,6 +389,41 @@ header {
   height: 30px;
   border: 1px solid #3077c6;
 }
+/*Available hotels styles*/
+.hotel_search {
+  background-color: #eaf0f9;
+  height: max-content;
+}
+.places_search {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 120px;
+}
+.places_image_search {
+  width: 95%;
+  height: 260px;
+}
+.places_items_search {
+  display: flex;
+}
+.name_hotel_search {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.hotel_offer_search {
+  position: relative;
+}
+.hotel_links_search {
+  text-decoration: none;
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+}
+.location_search {
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  color: #bfbfbf;
+}
+
 /*What do we offer styles*/
 .title {
   font-family: Roboto, sans-serif;
@@ -985,10 +1025,10 @@ button.slick-prev {
     padding-right: 16px;
   }
   .filter {
-    margin-left: 40%;
+    margin-left: 30%;
   }
   .children_number {
-    margin-left: 40%;
+    margin-left: 30%;
   }
   .night {
     padding-right: 16px;

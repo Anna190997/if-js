@@ -127,3 +127,39 @@ function childrenDelete() {
   childrenNumber.removeChild(childrenNumber.lastElementChild);
 }
 btnMinusSecond.addEventListener('click', childrenDelete);
+
+const baseUrl = `https://fe-student-api.herokuapp.com/api/hotels?`;
+const generateSearch = (place) => `${baseUrl}search=${place}`;
+
+const getPlace = async () => {
+  const place = document.getElementById('destination')?.value;
+  const response = await fetch(generateSearch(place));
+  const resultHotel = await response.json();
+
+  generateHotel(resultHotel);
+};
+const generateHotel = (resultHotel) => {
+  const hotel = document.getElementById('places_items_search');
+  const available = document.getElementById('hide');
+  available.classList.remove('hide');
+  let key;
+  for (key in resultHotel) {
+    hotel.innerHTML += `
+  <div class="hotel_offer_search">
+          <img src=${resultHotel[key].imageUrl} class="places_image_search" alt="places_image"/>
+       <div class="name_hotel_search">
+       <a href="#" class="hotel_links_search">${resultHotel[key].name}</a> </div>
+      <div class="location_search">${resultHotel[key].city}, ${resultHotel[key].country}</div>
+       </div>`;
+  }
+};
+document.getElementById('submit').addEventListener('click', getPlace);
+
+const getPlaceAdaptive = async () => {
+  const placeAdaptive = document.getElementById('destination_adaptive')?.value;
+  const response = await fetch(generateSearch(placeAdaptive));
+  const resultHotel = await response.json();
+
+  generateHotel(resultHotel);
+};
+document.getElementById('submit_adaptive').addEventListener('click', getPlaceAdaptive);
