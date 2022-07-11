@@ -1,16 +1,20 @@
 async function getResponse() {
-  const response = await fetch('https://fe-student-api.herokuapp.com/api/hotels/popular');
-  const content = await response.json();
-  const information = document.querySelector('.places_items');
-  let key;
-  for (key in content) {
-    information.innerHTML += `
+  try {
+    const response = await fetch('https://fe-student-api.herokuapp.com/api/hotels/popular');
+    const content = await response.json();
+    const information = document.querySelector('.places_items');
+    let key;
+    for (key in content) {
+      information.innerHTML += `
 <div class="hotel_offer col-7 slider__item">
           <img src=${content[key].imageUrl} class="places_image" alt="places_image"/>
        <div class="name_hotel">
        <a href="#" class="hotel_links">${content[key].name}</a> </div>
       <div class="location">${content[key].city}, ${content[key].country}</div>
        </div>`;
+    }
+  } catch (err) {
+    alert('Произошла ошибка. Обновите, пожалуйста, страницу');
   }
 }
 getResponse();
@@ -132,11 +136,14 @@ const baseUrl = `https://fe-student-api.herokuapp.com/api/hotels?`;
 const generateSearch = (place) => `${baseUrl}search=${place}`;
 
 const getPlace = async () => {
-  const place = document.getElementById('destination')?.value;
-  const response = await fetch(generateSearch(place));
-  const resultHotel = await response.json();
-
-  generateHotel(resultHotel);
+  try {
+    const place = document.getElementById('destination')?.value;
+    const response = await fetch(generateSearch(place));
+    const resultHotel = await response.json();
+    generateHotel(resultHotel);
+  } catch (err) {
+    alert('Произошла ошибка. Обновите, пожалуйста, страницу');
+  }
 };
 const generateHotel = (resultHotel) => {
   const hotel = document.getElementById('places_items_search');
@@ -156,10 +163,13 @@ const generateHotel = (resultHotel) => {
 document.getElementById('submit').addEventListener('click', getPlace);
 
 const getPlaceAdaptive = async () => {
-  const placeAdaptive = document.getElementById('destination_adaptive')?.value;
-  const response = await fetch(generateSearch(placeAdaptive));
-  const resultHotel = await response.json();
-
-  generateHotel(resultHotel);
+  try {
+    const placeAdaptive = document.getElementById('destination_adaptive')?.value;
+    const response = await fetch(generateSearch(placeAdaptive));
+    const resultHotel = await response.json();
+    generateHotel(resultHotel);
+  } catch (err) {
+    alert('Произошла ошибка. Обновите, пожалуйста, страницу');
+  }
 };
 document.getElementById('submit_adaptive').addEventListener('click', getPlaceAdaptive);
