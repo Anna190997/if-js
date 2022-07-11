@@ -1,16 +1,20 @@
 async function getResponse() {
-  const response = await fetch('https://fe-student-api.herokuapp.com/api/hotels/popular');
-  const content = await response.json();
-  const information = document.querySelector('.places_items');
-  let key;
-  for (key in content) {
-    information.innerHTML += `
+  try {
+    const response = await fetch('https://fe-student-api.herokuapp.com/api/hotels/popular');
+    const content = await response.json();
+    const information = document.querySelector('.places_items');
+    let key;
+    for (key in content) {
+      information.innerHTML += `
 <div class="hotel_offer col-7 slider__item">
           <img src=${content[key].imageUrl} class="places_image" alt="places_image"/>
        <div class="name_hotel">
        <a href="#" class="hotel_links">${content[key].name}</a> </div>
       <div class="location">${content[key].city}, ${content[key].country}</div>
        </div>`;
+    }
+  } catch (err) {
+    alert('Произошла ошибка. Обновите, пожалуйста страницу');
   }
 }
 getResponse();
