@@ -1,16 +1,20 @@
 async function getResponse() {
   try {
-    const response = await fetch('https://fe-student-api.herokuapp.com/api/hotels/popular');
-    const content = await response.json();
+    if (sessionStorage.getItem('content') !== null) {
+      const response = await fetch('https://fe-student-api.herokuapp.com/api/hotels/popular');
+      const content = await response.json();
+      sessionStorage.setItem('content', JSON.stringify(content));
+    }
+    const arr = JSON.parse(sessionStorage.getItem('content'));
     const information = document.querySelector('.places_items');
     let key;
-    for (key in content) {
+    for (key in arr) {
       information.innerHTML += `
 <div class="hotel_offer col-7 slider__item">
-          <img src=${content[key].imageUrl} class="places_image" alt="places_image"/>
+          <img src=${arr[key].imageUrl} class="places_image" alt="places_image"/>
        <div class="name_hotel">
-       <a href="#" class="hotel_links">${content[key].name}</a> </div>
-      <div class="location">${content[key].city}, ${content[key].country}</div>
+       <a href="#" class="hotel_links">${arr[key].name}</a> </div>
+      <div class="location">${arr[key].city}, ${arr[key].country}</div>
        </div>`;
     }
   } catch (err) {
