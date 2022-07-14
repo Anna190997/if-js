@@ -1,25 +1,51 @@
-async function getResponse() {
+const baseUrl = `https://fe-student-api.herokuapp.com/api/hotels?`;
+const generateSearch = (place, placeAdaptive) => `${baseUrl}search=${place}${placeAdaptive}`;
+
+const getPlace = async () => {
+  const place = document.getElementById('destination')?.value;
+  const placeAdaptive = document.getElementById('destination_adaptive')?.value;
   try {
-    if (sessionStorage.getItem('content') !== null) {
-      const response = await fetch('https://fe-student-api.herokuapp.com/api/hotels/popular');
-      const content = await response.json();
-      sessionStorage.setItem('content', JSON.stringify(content));
-    }
-    const arr = JSON.parse(sessionStorage.getItem('content'));
-    const information = document.querySelector('.places_items');
-    let key;
-    for (key in arr) {
-      information.innerHTML += `
-<div class="hotel_offer col-7 slider__item">
-          <img src=${arr[key].imageUrl} class="places_image" alt="places_image"/>
-       <div class="name_hotel">
-       <a href="#" class="hotel_links">${arr[key].name}</a> </div>
-      <div class="location">${arr[key].city}, ${arr[key].country}</div>
-       </div>`;
-    }
+    const response = await fetch(generateSearch(place, placeAdaptive));
+    const resultHotel = await response.json();
+    generateHotel(resultHotel);
   } catch (err) {
     alert('Произошла ошибка. Обновите, пожалуйста, страницу');
   }
+};
+const generateHotel = (resultHotel) => {
+  const hotel = document.getElementById('places_items_search');
+  const available = document.getElementById('hide');
+  available.classList.remove('hide');
+  resultHotel.forEach((destination) => {
+    hotel.innerHTML += `
+       <div class="hotel_offer_search">
+       <img src=${destination.imageUrl} class="places_image_search" alt="places_image"/>
+       <div class="name_hotel_search">
+       <a href="#" class="hotel_links_search">${destination.name}</a> </div>
+       <div class="location_search">${destination.city}, ${destination.country}</div>
+       </div>`;
+  });
+};
+document.getElementById('submit').addEventListener('click', getPlace);
+document.getElementById('submit_adaptive').addEventListener('click', getPlace);
+
+async function getResponse() {
+  if (sessionStorage.getItem('content')) {
+    const response = await fetch('https://fe-student-api.herokuapp.com/api/hotels/popular');
+    const content = await response.json();
+    sessionStorage.setItem('content', JSON.stringify(content));
+  }
+  const arr = JSON.parse(sessionStorage.getItem('content'));
+  const information = document.getElementById('places_items');
+  arr.forEach((key) => {
+    information.innerHTML += `
+       <div class="hotel_offer col-7 slider__item">
+       <img src=${key.imageUrl} class="places_image" alt="places_image"/>
+       <div class="name_hotel">
+       <a href="#" class="hotel_links">${key.name}</a> </div>
+       <div class="location">${key.city}, ${key.country}</div>
+       </div>`;
+  });
 }
 getResponse();
 
@@ -135,45 +161,3 @@ function childrenDelete() {
   childrenNumber.removeChild(childrenNumber.lastElementChild);
 }
 btnMinusSecond.addEventListener('click', childrenDelete);
-
-const baseUrl = `https://fe-student-api.herokuapp.com/api/hotels?`;
-const generateSearch = (place) => `${baseUrl}search=${place}`;
-
-const getPlace = async () => {
-  try {
-    const place = document.getElementById('destination')?.value;
-    const response = await fetch(generateSearch(place));
-    const resultHotel = await response.json();
-    generateHotel(resultHotel);
-  } catch (err) {
-    alert('Произошла ошибка. Обновите, пожалуйста, страницу');
-  }
-};
-const generateHotel = (resultHotel) => {
-  const hotel = document.getElementById('places_items_search');
-  const available = document.getElementById('hide');
-  available.classList.remove('hide');
-  let key;
-  for (key in resultHotel) {
-    hotel.innerHTML += `
-  <div class="hotel_offer_search">
-          <img src=${resultHotel[key].imageUrl} class="places_image_search" alt="places_image"/>
-       <div class="name_hotel_search">
-       <a href="#" class="hotel_links_search">${resultHotel[key].name}</a> </div>
-      <div class="location_search">${resultHotel[key].city}, ${resultHotel[key].country}</div>
-       </div>`;
-  }
-};
-document.getElementById('submit').addEventListener('click', getPlace);
-
-const getPlaceAdaptive = async () => {
-  try {
-    const placeAdaptive = document.getElementById('destination_adaptive')?.value;
-    const response = await fetch(generateSearch(placeAdaptive));
-    const resultHotel = await response.json();
-    generateHotel(resultHotel);
-  } catch (err) {
-    alert('Произошла ошибка. Обновите, пожалуйста, страницу');
-  }
-};
-document.getElementById('submit_adaptive').addEventListener('click', getPlaceAdaptive);
