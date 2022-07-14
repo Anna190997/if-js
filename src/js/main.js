@@ -30,22 +30,26 @@ document.getElementById('submit').addEventListener('click', getPlace);
 document.getElementById('submit_adaptive').addEventListener('click', getPlace);
 
 async function getResponse() {
-  if (sessionStorage.getItem('content')) {
-    const response = await fetch('https://fe-student-api.herokuapp.com/api/hotels/popular');
-    const content = await response.json();
-    sessionStorage.setItem('content', JSON.stringify(content));
-  }
-  const arr = JSON.parse(sessionStorage.getItem('content'));
-  const information = document.getElementById('places_items');
-  arr.forEach((key) => {
-    information.innerHTML += `
+  try {
+    if (!sessionStorage.getItem('content')) {
+      const response = await fetch('https://fe-student-api.herokuapp.com/api/hotels/popular');
+      const content = await response.json();
+      sessionStorage.setItem('content', JSON.stringify(content));
+    }
+    const arr = JSON.parse(sessionStorage.getItem('content'));
+    const information = document.getElementById('places_items');
+    arr.forEach((key) => {
+      information.innerHTML += `
        <div class="hotel_offer col-7 slider__item">
        <img src=${key.imageUrl} class="places_image" alt="places_image"/>
        <div class="name_hotel">
        <a href="#" class="hotel_links">${key.name}</a> </div>
        <div class="location">${key.city}, ${key.country}</div>
        </div>`;
-  });
+    });
+  } catch (err) {
+    alert('Произошла ошибка. Обновите, пожалуйста, страницу');
+  }
 }
 getResponse();
 
