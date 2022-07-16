@@ -12,6 +12,7 @@ async function getResponse() {
        <div class="location">${key.city}, ${key.country}</div>
        </div>`;
     });
+    new ChiefSlider('.slider', { loop: true });
   } catch (err) {
     alert('Произошла ошибка. Обновите, пожалуйста страницу');
   }
