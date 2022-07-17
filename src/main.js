@@ -1,31 +1,13 @@
-const formEl = document.getElementById('form');
-const fileValue = document.getElementById('file')
-formEl.addEventListener('submit', async (event) => {
+const formEl = document.getElementById('formEl');
+formEl.addEventListener('submit', (event) => {
   event.preventDefault();
-  const file = fileValue.value;
-  const fd = new FormData();
-  fd.append('file', file);
+  const formData = new FormData(formEl);
 
-  const fetchOptions = {
+  fetch(`https://fe-student-api.herokuapp.com/api/file`, {
     method: 'POST',
-    body: fd,
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
+    body: formData,
     mode: 'no-cors',
-  };
-
-  const res = await fetch(`https://fe-student-api.herokuapp.com/api/file`, fetchOptions)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => result)
-    .catch((error) => console.log(error.message));
-  console.log(res);
-  console.log(file);
-  console.log(fd);
+  }).then((response) => {
+    console.log(response);
+  });
 });
-
-
-
-
