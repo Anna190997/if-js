@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/styles/style.css" />
-    <link rel="stylesheet" href="libs/chief-slider.min.css"/>
+    <link rel="stylesheet" href="libs/chief-slider.min.css" />
     <title>TripHouse</title>
   </head>
   <body>
@@ -60,7 +60,7 @@
               type="text"
               placeholder="2 Adults — 0 Children — 1 Room"
             />
-            <input type="button" class="submit col-4 col-4-s" id="submit" value="Search"/>
+            <input type="button" class="submit col-4 col-4-s" id="submit" value="Search" />
           </div>
         </form>
         <form class="form_adaptive">
@@ -95,7 +95,7 @@
             <label for="rooms" class="label_adaptive_form label_adaptive_form_fifth">Rooms</label>
             <input id="rooms" type="text" class="rooms" placeholder="1" />
           </div>
-          <input type="button" class="button_adaptive_form" id="submit_adaptive" value="Search"/>
+          <input type="button" class="button_adaptive_form" id="submit_adaptive" value="Search" />
         </form>
         <form class="filter hidden" id="filter">
           <div class="filter_wrapper">
@@ -192,8 +192,15 @@
         <div class="hotels_available">
           <h2 class="title">Available hotels</h2>
         </div>
-        <div class="places_search">
-          <div class="places_items_search" id="places_items_search"></div>
+        <div class="slider" id="slider_1">
+          <div class="slider__container">
+            <div class="slider__wrapper">
+              <div class="places_search">
+                <div class="places_items_search slider__items" id="places_items_search"></div>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="slider__control" data-slide="next"></a>
         </div>
       </div>
     </div>
@@ -236,7 +243,7 @@
         <div class="homes_loves">
           <h2 class="title">Homes guests loves</h2>
         </div>
-        <div class="slider">
+        <div class="slider" id="slider_2">
           <div class="slider__container">
             <div class="slider__wrapper">
               <div class="places">
@@ -512,11 +519,6 @@
       </div>
     </div>
     <script type="module" src="src/js/main.js"></script>
-  <script src="libs/chief-slider.min.js"></script>
-  <script> document.addEventListener('DOMContentLoaded', function () {
-    const slider = new ChiefSlider('.slider', {
-      loop: false
-    });
-  });</script>
+    <script src="libs/chief-slider.min.js"></script>
   </body>
 </html>

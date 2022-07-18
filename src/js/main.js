@@ -2,6 +2,7 @@ const baseUrl = `https://fe-student-api.herokuapp.com/api/hotels?`;
 const generateSearch = (place, placeAdaptive) => `${baseUrl}search=${place}${placeAdaptive}`;
 
 const getPlace = async () => {
+  document.querySelector('.places_items_search').innerHTML = '';
   const place = document.getElementById('destination')?.value;
   const placeAdaptive = document.getElementById('destination_adaptive')?.value;
   try {
@@ -18,7 +19,7 @@ const generateHotel = (resultHotel) => {
   available.classList.remove('hide');
   resultHotel.forEach((destination) => {
     hotel.innerHTML += `
-       <div class="hotel_offer_search">
+       <div class="hotel_offer_search slider__item">
        <img src=${destination.imageUrl} class="places_image_search" alt="places_image"/>
        <div class="name_hotel_search">
        <a href="#" class="hotel_links_search">${destination.name}</a> </div>
@@ -43,7 +44,7 @@ async function getResponse() {
        <div class="location">${key.city}, ${key.country}</div>
        </div>`;
     });
-    new ChiefSlider('.slider', { loop: true });
+    new ChiefSlider('#slider_2', { loop: true });
   } catch (err) {
     alert('Произошла ошибка. Обновите, пожалуйста, страницу');
   }
