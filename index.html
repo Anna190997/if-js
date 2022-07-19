@@ -36,7 +36,7 @@
             to live, work or just relax
           </h1>
         </div>
-        <form class="informations invisible">
+        <form class="informations invisible" id="informations">
           <div class="form_label">
             <label for="destination" class="label_form">Your destination or hotel name</label>
             <label for="date" class="label_form">Check-in — Check-out</label><br />
@@ -60,7 +60,7 @@
               type="text"
               placeholder="2 Adults — 0 Children — 1 Room"
             />
-            <button type="submit" class="submit col-4 col-4-s">Search</button>
+            <input type="button" class="submit col-4 col-4-s" id="submit" value="Search" />
           </div>
         </form>
         <form class="form_adaptive">
@@ -68,6 +68,7 @@
             <img src="src/images/glass.svg" alt="glass" class="glass" />
             <input
               class="destination_adaptive"
+              id="destination_adaptive"
               type="text"
               placeholder="Your destination or hotel name"
             />
@@ -94,7 +95,7 @@
             <label for="rooms" class="label_adaptive_form label_adaptive_form_fifth">Rooms</label>
             <input id="rooms" type="text" class="rooms" placeholder="1" />
           </div>
-          <button class="button_adaptive_form">Search</button>
+          <input type="button" class="button_adaptive_form" id="submit_adaptive" value="Search" />
         </form>
         <form class="filter hidden" id="filter">
           <div class="filter_wrapper">
@@ -185,6 +186,25 @@
         </div>
       </div>
     </header>
+
+    <div class="hotel_search hide" id="hide">
+      <div class="container">
+        <div class="hotels_available">
+          <h2 class="title">Available hotels</h2>
+        </div>
+        <div class="slider" id="slider_1">
+          <div class="slider__container">
+            <div class="slider__wrapper">
+              <div class="places_search">
+                <div class="places_items_search slider__items" id="places_items_search"></div>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="slider__control" data-slide="next"></a>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
       <h2 class="title">What do we offer</h2>
       <div class="line"></div>
@@ -223,7 +243,7 @@
         <div class="homes_loves">
           <h2 class="title">Homes guests loves</h2>
         </div>
-        <div class="slider">
+        <div class="slider" id="slider_2">
           <div class="slider__container">
             <div class="slider__wrapper">
               <div class="places">
@@ -499,13 +519,6 @@
       </div>
     </div>
     <script type="module" src="src/js/main.js"></script>
-    <script defer src="/libs/chief-slider.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const slider = new ChiefSlider('.slider', {
-          loop: true,
-        });
-      });
-    </script>
+    <script src="libs/chief-slider.min.js"></script>
   </body>
 </html>

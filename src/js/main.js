@@ -1,3 +1,35 @@
+const baseUrl = `https://fe-student-api.herokuapp.com/api/hotels?`;
+const generateSearch = (place, placeAdaptive) => `${baseUrl}search=${place}${placeAdaptive}`;
+
+const getPlace = async () => {
+  document.querySelector('.places_items_search').innerHTML = '';
+  const place = document.getElementById('destination')?.value;
+  const placeAdaptive = document.getElementById('destination_adaptive')?.value;
+  try {
+    const response = await fetch(generateSearch(place, placeAdaptive));
+    const resultHotel = await response.json();
+    generateHotel(resultHotel);
+  } catch (err) {
+    alert('Произошла ошибка. Обновите, пожалуйста, страницу');
+  }
+};
+const generateHotel = (resultHotel) => {
+  const hotel = document.getElementById('places_items_search');
+  const available = document.getElementById('hide');
+  available.classList.remove('hide');
+  resultHotel.forEach((destination) => {
+    hotel.innerHTML += `
+       <div class="hotel_offer_search slider__item">
+       <img src=${destination.imageUrl} class="places_image_search" alt="places_image"/>
+       <div class="name_hotel_search">
+       <a href="#" class="hotel_links_search">${destination.name}</a> </div>
+       <div class="location_search">${destination.city}, ${destination.country}</div>
+       </div>`;
+  });
+};
+document.getElementById('submit').addEventListener('click', getPlace);
+document.getElementById('submit_adaptive').addEventListener('click', getPlace);
+
 async function getResponse() {
   try {
     const response = await fetch('https://fe-student-api.herokuapp.com/api/hotels/popular');
@@ -5,16 +37,16 @@ async function getResponse() {
     const information = document.querySelector('.places_items');
     content.forEach((key) => {
       information.innerHTML += `
-       <div class="hotel_offer col-7 slider__item">
+<div class="hotel_offer col-7 slider__item">
        <img src=${key.imageUrl} class="places_image" alt="places_image"/>
        <div class="name_hotel">
-       <a href="#" class="hotel_links">${key.name}</a> </div>
-       <div class="location">${key.city}, ${key.country}</div>
+       <a href="#" class="hotel_links">${content[key].name}</a> </div>
+      <div class="location">${content[key].city}, ${content[key].country}</div>
        </div>`;
     });
-    new ChiefSlider('.slider', { loop: true });
+    new ChiefSlider('#slider_2', { loop: true });
   } catch (err) {
-    alert('Произошла ошибка. Обновите, пожалуйста страницу');
+    alert('Произошла ошибка. Обновите, пожалуйста, страницу');
   }
 }
 getResponse();
