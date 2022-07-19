@@ -40,8 +40,8 @@ async function getResponse() {
 <div class="hotel_offer col-7 slider__item">
        <img src=${key.imageUrl} class="places_image" alt="places_image"/>
        <div class="name_hotel">
-       <a href="#" class="hotel_links">${key.name}</a> </div>
-       <div class="location">${key.city}, ${key.country}</div>
+       <a href="#" class="hotel_links">${content[key].name}</a> </div>
+      <div class="location">${content[key].city}, ${content[key].country}</div>
        </div>`;
     });
     new ChiefSlider('#slider_2', { loop: true });
