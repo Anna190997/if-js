@@ -118,8 +118,8 @@ document.querySelector('.change_filter').onclick = function (e) {
 
 const result = (amountFirst, amountSecond, amountThird) => {
   return `${amountFirst.innerHTML}  Adults — ${amountSecond.innerHTML}  Children — ${amountThird.innerHTML}  Room`.replace(
-    / /g,
-    '',
+      / /g,
+      '',
   );
 };
 
