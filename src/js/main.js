@@ -1,12 +1,21 @@
 const baseUrl = `https://fe-student-api.herokuapp.com/api/hotels?`;
-const generateSearch = (place, placeAdaptive) => `${baseUrl}search=${place}${placeAdaptive}`;
+const generateSearch = (place, placeAdaptive, amountFirst, childrenAge, amountThird) =>
+  `${baseUrl}search=${place}${placeAdaptive}&adults=${amountFirst}&children=${childrenAge}&rooms=${amountThird}`;
 
 const getPlace = async () => {
   document.querySelector('.places_items_search').innerHTML = '';
   const place = document.getElementById('destination')?.value;
   const placeAdaptive = document.getElementById('destination_adaptive')?.value;
   try {
-    const response = await fetch(generateSearch(place, placeAdaptive));
+    const response = await fetch(
+      generateSearch(
+        place,
+        placeAdaptive,
+        amountFirst.innerHTML,
+        childrenAge,
+        amountThird.innerHTML,
+      ),
+    );
     const resultHotel = await response.json();
     generateHotel(resultHotel);
   } catch (err) {
@@ -17,6 +26,7 @@ const generateHotel = (resultHotel) => {
   const hotel = document.getElementById('places_items_search');
   const available = document.getElementById('hide');
   available.classList.remove('hide');
+  bubbleSort(resultHotel);
   resultHotel.forEach((destination) => {
     hotel.innerHTML += `
        <div class="hotel_offer_search slider__item">
@@ -39,6 +49,7 @@ async function getResponse() {
     }
     const arr = JSON.parse(sessionStorage.getItem('content'));
     const information = document.getElementById('places_items');
+    bubbleSort(arr);
     arr.forEach((key) => {
       information.innerHTML += `
        <div class="hotel_offer col-7 slider__item">
@@ -118,8 +129,8 @@ document.querySelector('.change_filter').onclick = function (e) {
 
 const result = (amountFirst, amountSecond, amountThird) => {
   return `${amountFirst.innerHTML}  Adults — ${amountSecond.innerHTML}  Children — ${amountThird.innerHTML}  Room`.replace(
-      / /g,
-      '',
+    / /g,
+    '',
   );
 };
 
@@ -140,30 +151,60 @@ function btnDelete() {
 btn.addEventListener('click', btnDelete);
 btnAdaptive.addEventListener('click', btnDelete);
 const childrenNumber = document.getElementById('children_number');
+
 function childrenFilter() {
-  childrenNumber.innerHTML += `<select class="children_age">
-            <option>1 years old</option>
-            <option>2 years old</option>
-            <option>3 years old</option>
-            <option>4 years old</option>
-            <option>5 years old</option>
-            <option>6 years old</option>
-            <option>7 years old</option>
-            <option>8 years old</option>
-            <option>9 years old</option>
-            <option>10 years old</option>
-            <option>11 years old</option>
-            <option>12 years old</option>
-            <option>13 years old</option>
-            <option>14 years old</option>
-            <option>15 years old</option>
-            <option>16 years old</option>
-            <option>17 years old</option>
-            </select>
+  const extraChild = document.createElement('select');
+  extraChild.classList.add('children_age');
+  extraChild.innerHTML += `
+            <option value="1">1 years old</option>
+            <option value="2">2 years old</option>
+            <option value="3">3 years old</option>
+            <option value="4">4 years old</option>
+            <option value="5">5 years old</option>
+            <option value="6">6 years old</option>
+            <option value="7">7 years old</option>
+            <option value="8">8 years old</option>
+            <option value="9">9 years old</option>
+            <option value="10">10 years old</option>
+            <option value="11">11 years old</option>
+            <option value="12">12 years old</option>
+            <option value="13">13 years old</option>
+            <option value="14">14 years old</option>
+            <option value="15">15 years old</option>
+            <option value="16">16 years old</option>
+            <option value="17">17 years old</option>          
           `;
+  childrenNumber.appendChild(extraChild);
 }
 btnPlusSecond.addEventListener('click', childrenFilter);
 function childrenDelete() {
   childrenNumber.removeChild(childrenNumber.lastElementChild);
 }
 btnMinusSecond.addEventListener('click', childrenDelete);
+
+const getChildAges = () => {
+  const select = document.querySelectorAll('.children_age');
+  if (select.length === 0) {
+    return '0';
+  }
+  const arrAge = [];
+  select.forEach((item) => {
+    arrAge.push(item.value);
+  });
+  return arrAge.join(',');
+};
+const childrenAge = getChildAges();
+
+function bubbleSort(arr) {
+  for (let i = 0, endI = arr.length - 1; i < endI; i++) {
+    let wasSwap = false;
+    for (let j = 0, endJ = endI - i; j < endJ; j++) {
+      if (arr[j].name > arr[j + 1].name) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        wasSwap = true;
+      }
+    }
+    if (!wasSwap) break;
+  }
+  return arr;
+}
